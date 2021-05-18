@@ -121,9 +121,7 @@ export default class PostgreSQL {
       });
 
     })   
-  }
-    
-  
+  }   
   
   
   // Metodo que retorna query POST con los datos body
