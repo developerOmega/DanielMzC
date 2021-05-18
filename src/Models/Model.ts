@@ -58,7 +58,7 @@ export default class Model {
   static async paginate (init:number = 0, limit:number = 0) {
 
     let data = init != 0 && limit != 0 ? 
-      await db.query(`SELECT * FROM ${ this.table } WHERE id >= ? ORDER BY id ASC LIMIT ?`, [init, limit]) :
+      await db.query(`SELECT * FROM ${ this.table } ORDER BY id ASC OFFSET ? LIMIT ?`, [init - 1, limit]) :
       await db.query(`SELECT * FROM ${this.table}`);
     return data;
   }
