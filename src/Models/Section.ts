@@ -12,8 +12,8 @@ export default class Section extends Model {
   static ins: Section;
   static table: string = "sections";
 
-  constructor(section: ModelAndSection) {
-    super(section);
+  constructor(section: ModelAndSection, table:string) {
+    super(section, table);
     this._img = section.img;
     this._content = section.content;
     this._project_id = section.project_id;
@@ -30,12 +30,18 @@ export default class Section extends Model {
   }
 
   public get project_id():number {
-    return this.project_id;
+    return this._project_id;
   }
 
   // ==========================
 
-  static async projects() {
-
+  public async project() {
+    const data:any = await db.query(`
+      SELECT projects.id, projects.title, projects.description, projects.main_img, projects.admin_id, projects.updated_at, projects.created_at FROM projects 
+      INNER JOIN sections ON projects.id=sections.project_id 
+      WHERE sections.id = ?  
+    `, [this.id]);
+    return data[0];
   }
+
 }

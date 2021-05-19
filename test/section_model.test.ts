@@ -12,9 +12,13 @@ describe("Test the section model", () => {
       main_img: "img.png",
       admin_id: 1  
     }
-    
-    return await Project.create(valuesProject);
 
+    return await Project.create(valuesProject);
+  });
+
+  afterAll(async () => {
+    await db.query(`DELETE FROM projects`)
+    db.connection.end();
   });
   
  
@@ -45,6 +49,17 @@ describe("Test the section model", () => {
     content: "Este es un contenido para la seccion",
     project_id: 0
   }
+
+
+  it("it should show the project of section", async () => {
+    const project = await Project.first();
+    values.project_id = project.id;
+    
+    const section:any = await Section.create(values);
+    
+    expect( (await section.project()).id ).toBe(section.project_id);
+    await section.delete();
+  });
 
   it("it should show a section by id", async () => {
 
@@ -83,7 +98,6 @@ describe("Test the section model", () => {
 
     const findSection = await Section.byId(section.id);
     expect(findSection).toBe(false);
-    db.connection.end();
   });
 
 });

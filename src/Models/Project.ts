@@ -10,11 +10,11 @@ export default class Project extends Model {
   protected _main_img: string;
   protected _admin_id:number;
 
-  static int: Project;
+  static ins: Project;
   static table:string = "projects";
 
-  constructor(project: ModelAndProject) {
-    super(project);
+  constructor(project: ModelAndProject, table:string) {
+    super(project, table);
     this._title = project.title;
     this._description = project.description;
     this._main_img = project.main_img;
@@ -41,11 +41,21 @@ export default class Project extends Model {
 
   // ==========================
 
-  static async admin() {
-
+  public async admin() {
+    const data:any = await db.query(`
+      SELECT admins.id, admins.name, admins.email, admins.password, admins.is_su_admin, admins.updated_at, admins.created_at FROM projects 
+      INNER JOIN admins ON projects.admin_id=admins.id 
+      WHERE projects.id = ? 
+    `, [this.id]);
+    return data[0];
   }
 
-  static async sections() {
-
+  public async sections() { 
+    const data:any = await db.query(`
+      SELECT sections.id, sections.img, sections.content, sections.project_id, sections.updated_at, sections.created_at FROM sections 
+      INNER JOIN projects ON sections.project_id=projects.id 
+      WHERE sections.project_id = ?
+    `, [this.id]);
+    return data;
   }
 }

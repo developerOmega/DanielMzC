@@ -31,6 +31,13 @@ describe("Test the slider model", () => {
     url: "/portafolio",
     admin_id: 1
   }
+
+  it("it should show the admin of slider", async () => {
+    const slider:any = await Slider.create(values);
+
+    expect( (await slider.admin()).id ).toBe(slider.admin_id);
+    await slider.delete();
+  });
   
   it("it should show a slider by id", async () => {
     const createSlider = await Slider.create(values);

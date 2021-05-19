@@ -14,8 +14,8 @@ export default class Blog extends Model {
   static ins: Blog;
   static table: string = "blogs";
 
-  constructor(blog: ModelAndBlog) {
-    super(blog);
+  constructor(blog: ModelAndBlog, table:string) {
+    super(blog, table);
     this._title = blog.title;
     this._description = blog.description;
     this._content = blog.content;
@@ -49,7 +49,12 @@ export default class Blog extends Model {
   
   // ===========================
 
-  static async admin() {
-
+  public async admin() {
+    const data:any = await db.query(`
+      SELECT admins.id, admins.name, admins.email, admins.password, admins.is_su_admin, admins.updated_at, admins.created_at FROM blogs 
+      INNER JOIN admins ON blogs.admin_id=admins.id 
+      WHERE blogs.id = ?
+    `, [this.id]);
+    return data[0];
   }
 }

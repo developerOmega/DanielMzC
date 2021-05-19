@@ -34,6 +34,13 @@ describe( "Test the blog model", () => {
     main_img: "img.jpg",
     admin_id: 1
   }
+
+  it("it should show the admin of blog", async () => {
+    const blog:any = await Blog.create(values);
+
+    expect( (await blog.admin()).id ).toBe(blog.admin_id);
+    await blog.delete();
+  });
   
   it("it should show a blog by id", async () => {
     const createBlog = await Blog.create(values);

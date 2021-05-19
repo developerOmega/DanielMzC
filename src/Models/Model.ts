@@ -14,10 +14,14 @@ export default class Model {
   // Nombre de la tabla de la db
   static table:string = 'models';
 
-  constructor(model: ModelData) {
+  // Nombre de tabla para metodos de instnacia (Se podria mejorar)
+  protected table:string;
+
+  constructor(model: ModelData, table:string) {
     this._id = model.id;
     this._updated_at = model.updated_at;
     this._created_at = model.created_at;
+    this.table = table;
   }
 
   // GETTERS
@@ -70,8 +74,7 @@ export default class Model {
         return false;
       }
 
-      Model.table = this.table;
-      this.ins = new this(data[0]);
+      this.ins = new this(data[0], this.table);
       return this.ins;
 
     } catch (err) {
@@ -87,8 +90,7 @@ export default class Model {
         return false;
       }
 
-      Model.table = this.table;
-      this.ins = new this(data[0]);
+      this.ins = new this(data[0], this.table);
       return this.ins;
 
     } catch (err) {
@@ -103,8 +105,7 @@ export default class Model {
         return false;
       }
 
-      Model.table = this.table;
-      this.ins = new this(data[0]);
+      this.ins = new this(data[0], this.table);
       return this.ins;
 
     } catch (err) {
@@ -121,8 +122,7 @@ export default class Model {
       [data]
     );
 
-    Model.table = this.table;
-    this.ins = new this(query[0]);
+    this.ins = new this(query[0], this.table);
 
     return this.ins;
   }
@@ -131,12 +131,13 @@ export default class Model {
 
     body = Model.striptData(body);
 
-    let query:any =  await db.queryPatch(`UPDATE ${ Model.table } SET data? WHERE id = ? RETURNING *`, [body, this._id]);
+    let query:any =  await db.queryPatch(`UPDATE ${ this.table } SET data? WHERE id = ? RETURNING *`, [body, this._id]);
     return query[0];
   }
 
   async delete() {
-    let data = await db.query( `DELETE FROM ${ Model.table } WHERE id = ?`, [this._id]);
+    let data = await db.query( `DELETE FROM ${ this.table } WHERE id = ?`, [this._id]);
     return data;
   }
+
 }

@@ -1,4 +1,7 @@
 import Admin  from '../src/Models/Admin';
+import Blog from '../src/Models/Blog';
+import Slider from '../src/Models/Slider'
+import Project from '../src/Models/Project'
 import { AdminData } from '../src/interfaces/Models';
 import {db} from '../src/db/db';
 
@@ -19,7 +22,54 @@ describe("Test the admin model", () => {
     password: "qwerty123",
     is_su_admin: false
   };
+
+  it("it should show the blogs of admin", async () => {
+
+    const admin:any = await Admin.create(values);
+
+    await Blog.create({
+      title: "Titulo de Blog",
+      description: "Descripcion de blog",
+      content: "Contenido de blog",
+      main_img: "img.png",
+      admin_id: admin.id
+    });
+
+    expect( typeof await admin.blogs() ).toBe('object');    
+    await admin.delete();
+  });
   
+
+  it("it should show the sliders of admin", async () => {
+
+    const admin:any = await Admin.create(values);
+
+    await Slider.create({
+      img: "img.png",
+      content: "Descripcion del slider",
+      url: "www.google.com",
+      admin_id: admin.id
+    });
+
+    expect( typeof await admin.sliders() ).toBe('object');    
+    await admin.delete();
+  });
+
+  it("it should show the projects of admin", async () => {
+
+    const admin:any = await Admin.create(values);
+
+    await Project.create({
+      title: "Titulo de proyecto",
+      description: "Descripcion de proyecto",
+      main_img: "img.png",
+      admin_id: admin.id
+    });
+
+    expect( typeof await admin.projects() ).toBe('object');    
+    await admin.delete();
+  });
+
   it("it should show a admin by id", async () => {
     const createAdmin = await Admin.create(values);
     const admin:any = await Admin.byId(createAdmin.id);

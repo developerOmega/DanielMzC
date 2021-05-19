@@ -13,8 +13,8 @@ export default class Slider extends Model {
   static ins: Slider;
   static table: string = "sliders";
 
-  constructor(slider:ModelAndSlider){
-    super(slider);
+  constructor(slider:ModelAndSlider, table:string){
+    super(slider, table);
     this._img = slider.img;
     this._content = slider.content;
     this._url = slider.url;
@@ -43,7 +43,12 @@ export default class Slider extends Model {
 
 
   public async admin() {
-
+    let data:any = await db.query(`
+      SELECT admins.id, admins.name, admins.email, admins.password, admins.is_su_admin, admins.updated_at, admins.created_at FROM sliders 
+      INNER JOIN admins ON sliders.admin_id=admins.id
+      WHERE sliders.id = ?
+    `, [this.id]);
+    return data[0];
   }
 
 }

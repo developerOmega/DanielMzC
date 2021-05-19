@@ -1,4 +1,5 @@
 import Project from '../src/Models/Project';
+import Section from '../src/Models/Section';
 import { db } from '../src/db/db';
 import { ProjectData } from '../src/interfaces/Models';
 
@@ -31,6 +32,26 @@ describe("Test the project model", () => {
     main_img: "img.png",
     admin_id: 1  
   }
+
+  it("it should show the admin of project", async () => {
+    const project:any = await Project.create(values);
+
+    expect( (await project.admin()).id ).toBe(project.admin_id);
+    await project.delete();
+  });
+
+  it("it should show the sections of projects", async () => {
+    const project:any = await Project.create(values);
+    
+    await Section.create({
+      img: "image.png",
+      content: "Este es el contenido de la seccion",
+      project_id: project.id
+    });
+    
+    expect( typeof project.sections() ).toBe('object');
+    await project.delete();
+  });
   
   it("it should show a project by id", async () => {
     const createProject = await Project.create(values);
