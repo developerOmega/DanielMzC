@@ -79,6 +79,39 @@ export default class Model {
     }
   }
 
+  static async first() {
+    try {
+      let data:any = await db.query(`SELECT * FROM ${this.table} LIMIT 1`);
+      
+      if(!data[0]){
+        return false;
+      }
+
+      Model.table = this.table;
+      this.ins = new this(data[0]);
+      return this.ins;
+
+    } catch (err) {
+      return err;
+    }
+  }
+
+  static async last() {
+    try {
+      let data:any = await db.query(`SELECT * FROM ${this.table} ORDER BY id DESC LIMIT 1`);
+      if(!data[0]){
+        return false;
+      }
+
+      Model.table = this.table;
+      this.ins = new this(data[0]);
+      return this.ins;
+
+    } catch (err) {
+      return err;
+    }
+  }
+
   static async create(data:any) {
 
     data = this.striptData(data);
