@@ -7,6 +7,21 @@ import {db} from '../src/db/db';
 
 describe("Test the admin model", () => {
 
+  beforeAll(async () => {
+    const values:AdminData = {
+      name: "Taco",
+      email: "taco@email.com",
+      password: "qwerty123",
+      is_su_admin: false
+    };
+    
+    const admin:any = await Admin.create(values);
+  });
+
+  afterAll(async () => {
+    db.connection.end();
+  })
+
   it( "it should show all admins", async () => {
     expect(typeof await Admin.all()).toBe('object');
   })
@@ -15,17 +30,10 @@ describe("Test the admin model", () => {
     const admins:any = await Admin.paginate(1, 2);
     expect(admins.length).toBe(2);
   });
-  
-  const values:AdminData = {
-    name: "Taco",
-    email: "taco@email.com",
-    password: "qwerty123",
-    is_su_admin: false
-  };
 
   it("it should show the blogs of admin", async () => {
 
-    const admin:any = await Admin.create(values);
+    const admin:any = await Admin.last();
 
     await Blog.create({
       title: "Titulo de Blog",
@@ -36,13 +44,13 @@ describe("Test the admin model", () => {
     });
 
     expect( typeof await admin.blogs() ).toBe('object');    
-    await admin.delete();
+
   });
   
 
   it("it should show the sliders of admin", async () => {
 
-    const admin:any = await Admin.create(values);
+    const admin:any = await Admin.last();
 
     await Slider.create({
       img: "img.png",
@@ -52,12 +60,11 @@ describe("Test the admin model", () => {
     });
 
     expect( typeof await admin.sliders() ).toBe('object');    
-    await admin.delete();
   });
 
   it("it should show the projects of admin", async () => {
 
-    const admin:any = await Admin.create(values);
+    const admin:any = await Admin.last();
 
     await Project.create({
       title: "Titulo de proyecto",
@@ -67,42 +74,38 @@ describe("Test the admin model", () => {
     });
 
     expect( typeof await admin.projects() ).toBe('object');    
-    await admin.delete();
   });
 
   it("it should show a admin by id", async () => {
-    const createAdmin = await Admin.create(values);
-    const admin:any = await Admin.byId(createAdmin.id);
+    const findAdmin = await Admin.last();
+    const admin:any = await Admin.byId(findAdmin.id);
     
-    expect(createAdmin).toStrictEqual(admin);
-    await admin.delete();
+    expect(findAdmin).toStrictEqual(admin)
   });
 
   it("it should show a admin by email", async () => {
-    const createAdmin:any = await Admin.create(values);
-    const admin = await Admin.byEmail(createAdmin.email);
+    const findAdmin:any = await Admin.last();
+    const admin = await Admin.byEmail(findAdmin.email);
 
-    expect(createAdmin).toStrictEqual(admin);
-    await admin.delete();
+    expect(findAdmin).toStrictEqual(admin);
   });
   
   it("it should update a admin", async () => {
-    const admin:any = await Admin.create(values);
+    const admin:any = await Admin.last();
     const adminUdated = await admin.update({
       name: "Eduardo Mendoza"
     });
     
     expect(adminUdated.name).toEqual("Eduardo Mendoza");
-    await admin.delete();
   });
   
   it("it should delete a admin", async () => {
-    const admin = await Admin.create(values);
+    const admin:any = await Admin.last();
     await admin.delete();
 
     const findAdmin = await Admin.byId(admin.id);
     expect(findAdmin).toBe(false);
-    db.connection.end();
+    
   });
 
 });

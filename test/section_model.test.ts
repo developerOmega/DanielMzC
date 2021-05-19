@@ -12,12 +12,18 @@ describe("Test the section model", () => {
       main_img: "img.png",
       admin_id: 1  
     }
+    const project = await Project.create(valuesProject);
 
-    return await Project.create(valuesProject);
+    const valuesSection:SectionData = {
+      img: "section.jpg",
+      content: "Este es un contenido para la seccion",
+      project_id: project.id
+    }
+    const section:any = await Section.create(valuesSection);
   });
 
   afterAll(async () => {
-    await db.query(`DELETE FROM projects`)
+    await db.query(`DELETE FROM projects`);
     db.connection.end();
   });
   
@@ -41,59 +47,36 @@ describe("Test the section model", () => {
     const sections:any = await Section.paginate(1, 2);
     expect(sections.length).toBe(2);
     
-    await db.query(`DELETE FROM sections`);
   });
 
-  const values:SectionData = {
-    img: "section.jpg",
-    content: "Este es un contenido para la seccion",
-    project_id: 0
-  }
+  
 
 
   it("it should show the project of section", async () => {
-    const project = await Project.first();
-    values.project_id = project.id;
-    
-    const section:any = await Section.create(values);
+    const section:any = await Section.first();
     
     expect( (await section.project()).id ).toBe(section.project_id);
-    await section.delete();
   });
 
   it("it should show a section by id", async () => {
-
-    const project = await Project.first();
-    values.project_id = project.id;
-
-    const createSection = await Section.create(values);
+    const createSection = await Section.first();
     const section:any = await Section.byId(createSection.id);
     
     expect(createSection).toStrictEqual(section);
-    await section.delete();
 
   });
   
   it("it should update a section", async () => {
-
-    const project = await Project.first();
-    values.project_id = project.id;
-
-    const section:any = await Section.create(values);
+    const section:any = await Section.first();
     const sectionUdated = await section.update({
       img: "sectionEDIT.png"
     });
     
     expect(sectionUdated.img).toEqual("sectionEDIT.png");
-    await section.delete();
   });
 
   it("it should delete a section", async () => {
-   
-    const project = await Project.first();
-    values.project_id = project.id;
-
-    const section = await Section.create(values);
+    const section = await Section.first();
     await section.delete();
 
     const findSection = await Section.byId(section.id);

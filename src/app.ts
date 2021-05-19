@@ -1,5 +1,5 @@
 import Server from './server/server';
-import { Request, Response } from 'express';
+import  addRouter from './Routes';
 
 import bodyParser = require('body-parser');
 import hbs = require('hbs');
@@ -15,10 +15,6 @@ const pathPartial = path.resolve(__dirname, '../views/partials')
 hbs.registerPartials(pathPartial);
 server.app.set('view engine', 'hbs');
 
-server.app.get('/', (req: Request, res: Response) => {  
-  res.render('home', {
-    titlePage: "Home"
-  });
-})
+addRouter();
 
 export { server };

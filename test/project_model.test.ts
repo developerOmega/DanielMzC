@@ -5,6 +5,24 @@ import { ProjectData } from '../src/interfaces/Models';
 
 describe("Test the project model", () => {
 
+  beforeAll( async () => {
+    const values:ProjectData = {
+      title: `Project`,
+      description: `Descripcion de proyecto`,
+      main_img: "img.png",
+      admin_id: 1  
+    }
+
+    const project:any = await Project.create(values);
+    
+    return project;
+  })
+
+  afterAll(async () => {
+    await db.query(`DELETE FROM projects`);
+    db.connection.end();
+  })
+
   it( "it should show all projects", async () => {
     expect(typeof await Project.all()).toBe('object');
   });
@@ -23,25 +41,18 @@ describe("Test the project model", () => {
     const projects:any = await Project.paginate(1, 2);
     expect(projects.length).toBe(2);
     
-    await db.query(`DELETE FROM projects`);
   });
   
-  const values:ProjectData = {
-    title: `Project`,
-    description: `Descripcion de proyecto`,
-    main_img: "img.png",
-    admin_id: 1  
-  }
+  
 
   it("it should show the admin of project", async () => {
-    const project:any = await Project.create(values);
+    const project:any = await Project.first();
 
     expect( (await project.admin()).id ).toBe(project.admin_id);
-    await project.delete();
   });
 
   it("it should show the sections of projects", async () => {
-    const project:any = await Project.create(values);
+    const project:any = await Project.first();
     
     await Section.create({
       img: "image.png",
@@ -50,42 +61,30 @@ describe("Test the project model", () => {
     });
     
     expect( typeof project.sections() ).toBe('object');
-    await project.delete();
   });
   
   it("it should show a project by id", async () => {
-    const createProject = await Project.create(values);
-    const project:any = await Project.byId(createProject.id);
+    const findProject = await Project.first();
+    const project:any = await Project.byId(findProject.id);
     
-    expect(createProject).toStrictEqual(project);
-    await project.delete();
-  });
-
-  it("it should show a project by id", async () => {
-    const createProject = await Project.create(values);
-    const project:any = await Project.byId(createProject.id);
-    
-    expect(createProject).toStrictEqual(project);
-    await project.delete();
+    expect(findProject).toStrictEqual(project);
   });
   
   it("it should update a project", async () => {
-    const project:any = await Project.create(values);
+    const project:any = await Project.first();
     const projectUdated = await project.update({
-      title: "Projecto EDITADO"
+      title: "proyecto EDITADO"
     });
     
-    expect(projectUdated.title).toEqual("Projecto EDITADO");
-    await project.delete();
+    expect(projectUdated.title).toEqual("proyecto EDITADO");
   });
 
   it("it should delete a project", async () => {
-    const project = await Project.create(values);
+    const project = await Project.first();
     await project.delete();
 
     const findProject = await Project.byId(project.id);
     expect(findProject).toBe(false);
-    db.connection.end();
   });
 
 });

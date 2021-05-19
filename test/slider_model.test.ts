@@ -4,6 +4,21 @@ import {db} from '../src/db/db';
 
 describe("Test the slider model", () => {
 
+  beforeAll(async () => {
+    const values:SliderData = {
+      img: "portafolio.jpg",
+      content: "Este es un contenido para el portafolio",
+      url: "/portafolio",
+      admin_id: 1
+    }
+    return await Slider.create(values);
+  });
+
+  afterAll(async () => {
+    await db.query(`DELETE FROM sliders`);
+    db.connection.end();
+  })
+
   it( "it should show all sliders", async () => {
     expect(typeof await Slider.all()).toBe('object');
   });
@@ -22,48 +37,36 @@ describe("Test the slider model", () => {
     const sliders:any = await Slider.paginate(1, 2);
     expect(sliders.length).toBe(2);
     
-    await db.query(`DELETE FROM sliders`);
   });
-  
-  const values:SliderData = {
-    img: "portafolio.jpg",
-    content: "Este es un contenido para el portafolio",
-    url: "/portafolio",
-    admin_id: 1
-  }
 
   it("it should show the admin of slider", async () => {
-    const slider:any = await Slider.create(values);
+    const slider:any = await Slider.first();
 
     expect( (await slider.admin()).id ).toBe(slider.admin_id);
-    await slider.delete();
   });
   
   it("it should show a slider by id", async () => {
-    const createSlider = await Slider.create(values);
-    const slider:any = await Slider.byId(createSlider.id);
+    const findSlider = await Slider.first();
+    const slider:any = await Slider.byId(findSlider.id);
     
-    expect(createSlider).toStrictEqual(slider);
-    await slider.delete();
+    expect(findSlider).toStrictEqual(slider);
   });
   
   it("it should update a slider", async () => {
-    const slider:any = await Slider.create(values);
+    const slider:any = await Slider.first();
     const sliderUdated = await slider.update({
       img: "portafolio_editado.png"
     });
     
     expect(sliderUdated.img).toEqual("portafolio_editado.png");
-    await slider.delete();
   });
 
   it("it should delete a slider", async () => {
-    const slider = await Slider.create(values);
+    const slider = await Slider.first();
     await slider.delete();
 
     const findSlider = await Slider.byId(slider.id);
     expect(findSlider).toBe(false);
-    db.connection.end();
   });
 
 });
