@@ -13,6 +13,7 @@ server.app.use(bodyParser.json());
 
 const pathPartial = path.resolve(__dirname, '../views/partials')
 hbs.registerPartials(pathPartial);
+
 server.app.set('view engine', 'hbs');
 
 addRouter();
