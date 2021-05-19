@@ -4,7 +4,7 @@ import {db} from '../src/db/db';
 
 describe("Test the slider model", () => {
 
-  it( "it should show all admins", async () => {
+  it( "it should show all sliders", async () => {
     expect(typeof await Slider.all()).toBe('object');
   });
   
