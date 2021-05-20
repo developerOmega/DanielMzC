@@ -3,6 +3,7 @@ import { db } from '../src/db/db';
 import { server } from '../src/app';
 import Admin from '../src/Models/Admin';
 import Slider from '../src/Models/Slider';
+import Blog from '../src/Models/Blog';
 
 
 afterAll(async () => {
@@ -111,6 +112,64 @@ describe("Test admin sliders routes", () => {
     const slider = await Slider.last();
     const response = await request(server.app)
       .delete(`/admin/sliders/${slider.id}`);
+    
+    expect(response.statusCode).toEqual(201);
+  });
+
+});
+
+
+describe("Test admin blogs routes", () => {
+  test("It should response GET methdo to blogs index", async () => {
+    const response = await request(server.app).get('/admin/blogs');
+    expect(response.statusCode).toBe(200);
+  });
+
+  test("It should response GET methdo to blogs new", async () => {
+    const response = await request(server.app).get('/admin/blogs/new');
+    expect(response.statusCode).toBe(200);
+  });
+
+  test("It should create new blog", async () => {
+
+    const response = await request(server.app)
+      .post(`/admin/blogs`)
+      .send({
+        title: "Titulo del post",
+        description: "Descripcion de post",
+        content: "Este es el contenido del post",
+        main_img: "image.png",
+        admin_id: 1
+      });
+
+    expect(response.statusCode).toEqual(201);
+  });
+
+  test("It should response GET method to blogs show", async () => {
+    const blog = await Blog.last();
+    const response = await request(server.app).get(`/admin/blogs/show/${blog.id}`);
+    expect(response.statusCode).toBe(200);
+  });
+  
+  test("It should response GET method to blogs edit", async() => {
+    const blog = await Blog.last();
+    const response = await request(server.app).get(`/admin/blogs/edit/${blog.id}`);
+    expect(response.statusCode).toBe(200)
+  });
+
+  test("It should update blog", async () => {
+    const blog = await Blog.last();
+    const response = await request(server.app)
+      .put(`/admin/blogs/${blog.id}`)
+      .send({ title: "Titulo del blog EDITADO" });
+
+    expect(response.statusCode).toEqual(201);
+  });
+
+  test("It should delete blog", async () => {
+    const blog = await Blog.last();
+    const response = await request(server.app)
+      .delete(`/admin/blogs/${blog.id}`);
     
     expect(response.statusCode).toEqual(201);
   });

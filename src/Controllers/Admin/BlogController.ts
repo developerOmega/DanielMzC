@@ -1,17 +1,17 @@
 import { Request, Response } from "express";
-import Slider from '../../Models/Slider';
-import { SliderData } from "../../interfaces/Models";
+import Blog from '../../Models/Blog';
+import { BlogData } from "../../interfaces/Models";
 
-export default class SliderController {
+export default class BlogController {
 
   public async index(req: Request, res: Response) {
     try {
       
-      const sliders = await Slider.all();
+      const blogs = await Blog.all();
 
-      res.render('admin_panel/sliders/index', {
+      res.render('admin_panel/blogs/index', {
         titlePage: "Sliders",
-        sliders
+        blogs
       })
 
     } catch (error) {
@@ -23,15 +23,15 @@ export default class SliderController {
     let id:number = parseInt(req.params.id);
 
     try {
-      const slider = await Slider.byId(id);
+      const blog = await Blog.byId(id);
       
-      if(!slider.id) {
+      if(!blog.id) {
         return res.redirect('back', 400);
       }
 
-      return res.render('admin_panel/sliders/show', {
-        titlePage: `Slider ${slider.id}`,
-        slider
+      return res.render('admin_panel/blogs/show', {
+        titlePage: blog.title,
+        blog
       });
 
     } catch (error) {
@@ -40,29 +40,30 @@ export default class SliderController {
   }
 
   public new(req: Request, res: Response) {
-    res.render('admin_panel/sliders/new', {
-      titlePage: "New Slider"
+    res.render('admin_panel/blogs/new', {
+      titlePage: "New Blog"
     });
   }
 
   public async create(req: Request, res: Response) {
-    let body = <SliderData> req.body;
+    let body = <BlogData> req.body;
 
     try {
-      const params: SliderData = {
-        img: body.img,
+      const params: BlogData = {
+        title: body.title,
+        description: body.description,
         content: body.content,
-        url: body.url,
+        main_img: body.main_img,
         admin_id: body.admin_id
       }
 
-      const slider = await Slider.create(params);
+      const blog = await Blog.create(params);
 
-      if(!slider.id){
+      if(!blog.id){
         return res.redirect('back', 400);
       }
 
-      return res.redirect(`/admin/sliders/show/${slider.id}`, 201);     
+      return res.redirect(`/admin/blogs/show/${blog.id}`, 201);     
 
     } catch (error) {
       res.redirect('back', 500)
@@ -74,15 +75,15 @@ export default class SliderController {
 
     try {
 
-      const slider = await Slider.byId(id);
+      const blog = await Blog.byId(id);
 
-      if(!slider.id) {
+      if(!blog.id) {
         return res.redirect('back', 404)
       }
 
-      return res.render('admin_panel/sliders/edit', {
-        titlePage: `Edit Slider ${slider.id}`,
-        slider
+      return res.render('admin_panel/blogs/edit', {
+        titlePage: blog.title,
+        blog
       });
 
     } catch (error) {
@@ -95,15 +96,15 @@ export default class SliderController {
     let body = req.body;
     try {
       
-      const slider = await Slider.byId(id);
+      const blog = await Blog.byId(id);
       
-      if(!slider) {
+      if(!blog) {
         return res.redirect('back', 404);
       }
 
-      await slider.update(body);
+      await blog.update(body);
 
-      return res.redirect(`/admin/blogs/show/${slider.id}`, 201);
+      return res.redirect(`/admin/blogs/show/${blog.id}`, 201);
 
     } catch (error) {
       return res.redirect('back', 500)
@@ -114,13 +115,13 @@ export default class SliderController {
     let id: number = parseInt(req.params.id);
     
     try {
-      const slider = await Slider.byId(id);
+      const blog = await Blog.byId(id);
       
-      if(!slider) {
+      if(!blog) {
         return res.redirect('back', 404);
       }
 
-      await slider.delete();
+      await blog.delete();
 
       return res.redirect(`/admin/blogs`, 201);
 
