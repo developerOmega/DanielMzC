@@ -62,7 +62,7 @@ export default class ProjectController {
         return res.redirect('back', 400);
       }
 
-      return res.redirect(`/admin/projects/show/${project.id}`, 201);     
+      return res.redirect(`/admin_panel/projects/show/${project.id}`, 201);     
 
     } catch (error) {
       res.redirect('back', 500)
@@ -103,7 +103,7 @@ export default class ProjectController {
 
       await project.update(body);
 
-      return res.redirect(`/admin/projects/show/${project.id}`, 201);
+      return res.redirect(`/admin_panel/projects/show/${project.id}`, 201);
 
     } catch (error) {
       return res.redirect('back', 500)
@@ -122,7 +122,7 @@ export default class ProjectController {
 
       await project.delete();
 
-      return res.redirect(`/admin/projects`, 201);
+      return res.redirect(`/admin_panel/projects`, 201);
 
     } catch (error) {
       return res.redirect('back', 500);

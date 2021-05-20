@@ -63,7 +63,7 @@ export default class BlogController {
         return res.redirect('back', 400);
       }
 
-      return res.redirect(`/admin/blogs/show/${blog.id}`, 201);     
+      return res.redirect(`/admin_panel/blogs/show/${blog.id}`, 201);     
 
     } catch (error) {
       res.redirect('back', 500)
@@ -104,7 +104,7 @@ export default class BlogController {
 
       await blog.update(body);
 
-      return res.redirect(`/admin/blogs/show/${blog.id}`, 201);
+      return res.redirect(`/admin_panel/blogs/show/${blog.id}`, 201);
 
     } catch (error) {
       return res.redirect('back', 500)
@@ -123,7 +123,7 @@ export default class BlogController {
 
       await blog.delete();
 
-      return res.redirect(`/admin/blogs`, 201);
+      return res.redirect(`/admin_panel/blogs`, 201);
 
     } catch (error) {
       return res.redirect('back', 500);

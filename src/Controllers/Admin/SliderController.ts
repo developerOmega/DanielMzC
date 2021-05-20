@@ -62,7 +62,7 @@ export default class SliderController {
         return res.redirect('back', 400);
       }
 
-      return res.redirect(`/admin/sliders/show/${slider.id}`, 201);     
+      return res.redirect(`/admin_panel/sliders/show/${slider.id}`, 201);     
 
     } catch (error) {
       res.redirect('back', 500)
@@ -103,7 +103,7 @@ export default class SliderController {
 
       await slider.update(body);
 
-      return res.redirect(`/admin/blogs/show/${slider.id}`, 201);
+      return res.redirect(`/admin_panel/blogs/show/${slider.id}`, 201);
 
     } catch (error) {
       return res.redirect('back', 500)
@@ -122,7 +122,7 @@ export default class SliderController {
 
       await slider.delete();
 
-      return res.redirect(`/admin/blogs`, 201);
+      return res.redirect(`/admin_panel/blogs`, 201);
 
     } catch (error) {
       return res.redirect('back', 500);

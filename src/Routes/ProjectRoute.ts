@@ -9,12 +9,12 @@ const PROJECT_IN_ADMIN = new ProjectControllerAdmin();
 router.get('/projects', PROJECT.index);
 router.get('/projects/:id', PROJECT.show);
 
-router.get('/admin/projects', PROJECT_IN_ADMIN.index);
-router.get('/admin/projects/show/:id', PROJECT_IN_ADMIN.show);
-router.get('/admin/projects/new', PROJECT_IN_ADMIN.new);
-router.post('/admin/projects', PROJECT_IN_ADMIN.create );
-router.get('/admin/projects/edit/:id', PROJECT_IN_ADMIN.edit);
-router.put('/admin/projects/:id', PROJECT_IN_ADMIN.update);
-router.delete('/admin/projects/:id', PROJECT_IN_ADMIN.delete);
+router.get('/admin_panel/projects', PROJECT_IN_ADMIN.index);
+router.get('/admin_panel/projects/show/:id', PROJECT_IN_ADMIN.show);
+router.get('/admin_panel/projects/new', PROJECT_IN_ADMIN.new);
+router.post('/admin_panel/projects', PROJECT_IN_ADMIN.create );
+router.get('/admin_panel/projects/edit/:id', PROJECT_IN_ADMIN.edit);
+router.put('/admin_panel/projects/:id', PROJECT_IN_ADMIN.update);
+router.delete('/admin_panel/projects/:id', PROJECT_IN_ADMIN.delete);
 
 export default router;

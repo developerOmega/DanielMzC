@@ -68,7 +68,7 @@ export default class AdminController {
         return res.redirect('back');
       }
 
-      return res.redirect(`/admin/admins/show/${admin.id}`, 201)
+      return res.redirect(`/admin_panel/admins/show/${admin.id}`, 201)
 
     } catch (err) {
       res.redirect('back')
@@ -107,7 +107,7 @@ export default class AdminController {
       }
 
       await admin.update(body);
-      return res.redirect(`/admin/admins/show/${admin.id}`, 201);
+      return res.redirect(`/admin_panel/admins/show/${admin.id}`, 201);
 
     } catch (error) {
       res.redirect('back');
@@ -126,7 +126,7 @@ export default class AdminController {
       }
       
       await admin.delete();
-      return res.redirect('/admin/admins', 201)
+      return res.redirect('/admin_panel/admins', 201)
     
     } catch (error) {
       res.redirect('back');
