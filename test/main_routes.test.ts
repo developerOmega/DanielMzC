@@ -1,5 +1,10 @@
 const request = require("supertest")
 import { server } from '../src/app';
+import { db } from '../src/db/db';
+
+afterAll(async () => {
+  await db.connection.end();
+})
 
 describe("Test the root path", () => {
   test("It should response the GET method to index", async () => {
