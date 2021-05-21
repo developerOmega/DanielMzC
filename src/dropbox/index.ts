@@ -21,34 +21,77 @@ export default class DropboxApi {
 
     // Lista de los archivos almacenados de la aplicacion dropbox
     // Recibe parametros -> path:string, callback:function
-    listFolder(path:string, callback:Function){
-      this.dbx.filesListFolder({path})
-        .then((response:any) => callback(null, response))
-        .catch((error:any) => callback(error)); 
+    async listFolder(path:string){
+      try {
+        const fileListFolder = await this.dbx.filesListFolder({path});
+        return fileListFolder;
+        
+      } catch (error) {
+        return error;
+
+      }
     }
 
     // Subir archivos a aplicacion dropbox
     // Recibe parametros -> path:string (nombre de la imagen), contents:img (data de la imagen), callback:function
-    upload(path:string, contents:any, callback:Function ){
-      this.dbx.filesUpload({path, contents})
-        .then( (response:any) => callback(null, response))
-        .catch( (error:any) => callback(error));
+    async upload(path:string, contents:any ){
+      try {
+        const data = await this.dbx.filesUpload({path, contents});
+        return data;
+        
+      } catch (error) {
+        return error;
+
+      }
+
     }
 
     // Crear link publico de archivo de la aplicacion dropbox
     // Recibe parametros -> path:string (path_display de la imagen subida), callback:function
-    sharedLink(path:string, callback:Function){
-      this.dbx.sharingCreateSharedLinkWithSettings({path})
-        .then((response:any) => callback(null, response))
-        .catch((error:any) => callback(error));
+    async sharedLink(path:string){
+      try {
+        const data = await this.dbx.sharingCreateSharedLinkWithSettings({path})
+        return data;
+
+      } catch (error) {
+        return error;
+
+      }
     }
 
     // Eliminar archivos de aplicacion dropbox
     // Recibe parametros -> path:string (nombre de la imagen que se encuentra almacenada), callback:function
-    delete(path:string, callback:Function){
-      this.dbx.filesDelete({path})
-        .then((response:any) => callback(null, response))
-        .catch((error:any) => callback(error));
+    async delete(path:string){
+
+      try {
+        const data = await this.dbx.filesDelete({path})
+        return data;
+
+      } catch (error) {
+        return error;
+
+      }
+
+    }
+
+    // Actualizar archivos de una aplicacion dropbox
+    // Recibe parametros -> 
+    //      path:string (nombre de la imagen que sera remplazada), 
+    //      newPath:string(nombre de la nueva imagen), 
+    //      contents:img(data de la imagen)    
+    async update(path:string, newPath:string, contents:any) {
+      try {
+        await this.dbx.filesDelete({path});
+        
+        const img = await this.dbx.filesUpload({newPath, contents});
+        const dataPath = img.result.path_display;
+
+        const data = await this.dbx.sharingCreateSharedLinkWithSettings({ dataPath });
+        return data;
+
+      } catch (error) {
+        return error;
+      }
     }
 
 }
