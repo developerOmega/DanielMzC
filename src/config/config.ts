@@ -13,7 +13,7 @@ const nodeEnv:string = process.env.NODE_ENV || 'development';
 // ====================================
 // Entorno de Dropbox
 // ====================================
-// const dropboxEnv = nodeEnv === 'development' ? fs.readFileSync('src/Key/dropboxToken.key', 'utf8') : process.env.DROPBOX || ''; 
+const dropboxEnv = nodeEnv === 'development' ? fs.readFileSync('keys/dropbox.key', 'utf8') : process.env.DROPBOX || ''; 
 
 // ====================================
 // Session Confog
@@ -37,5 +37,5 @@ class DatabaseEnv {
 
 
 export { 
-  port, nodeEnv, SessionConf, DatabaseEnv
+  port, nodeEnv, SessionConf, DatabaseEnv, dropboxEnv
 };
