@@ -19,6 +19,7 @@
     "express-fileupload": "^1.2.1",
     "hbs": "^4.1.2",
     "isomorphic-fetch": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3"
   },
@@ -30,6 +31,7 @@
     "@types/hbs": "^4.0.1",
     "@types/isomorphic-fetch": "0.0.35",
     "@types/jest": "^26.0.23",
+    "@types/jsonwebtoken": "^8.5.1",
     "@types/pg": "^7.14.11",
     "jest": "^26.6.3",
     "supertest": "^6.1.3",

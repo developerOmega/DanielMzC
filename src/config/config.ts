@@ -23,6 +23,33 @@ class SessionConf {
 }
 
 // ====================================
+// JsonWebToken
+// ====================================
+class JwtEnv {
+
+  static signOptions:object = {
+    issuer:  'Mysoft corp',
+    subject:  'some@user.com',
+    audience:  'http://mysoftcorp.in',
+    expiresIn:  "48h",
+    algorithm:  "RS256"
+  };
+
+  static verifyOptions:object = {
+    issuer:  'Mysoft corp',
+    subject:  'some@user.com',
+    audience:  'http://mysoftcorp.in',
+    expiresIn:  "48h",
+    algorithm:  ["RS256"]
+  };
+
+  static publicKey:string = nodeEnv === 'development' || "test" ? fs.readFileSync('keys/public.key', 'utf8') : (<any>process.env.PUBLICUS_KEY).replace(/\\n/gm, '\n') || '';
+  static privateKey:string = nodeEnv === 'development' || "test" ? fs.readFileSync('keys/private.key', 'utf8') : (<any>process.env.PRIVATEUS_KEY).replace(/\\n/gm, '\n' || '');
+   
+}
+
+
+// ====================================
 // Base de datos
 // ====================================
 
@@ -37,5 +64,5 @@ class DatabaseEnv {
 
 
 export { 
-  port, nodeEnv, SessionConf, DatabaseEnv, dropboxEnv
+  port, nodeEnv, SessionConf, DatabaseEnv, dropboxEnv, JwtEnv
 };
