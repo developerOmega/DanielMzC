@@ -40,7 +40,7 @@ export interface BlogData {
 
 // Interfaz de Seccions
 export interface SectionData {
-  img: string,
+  img?: string,
   content: string,
   project_id: number
 }

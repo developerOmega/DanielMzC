@@ -5,7 +5,7 @@ import { SectionData, ModelData } from "../interfaces/Models";
 interface ModelAndSection extends ModelData, SectionData {}
 
 export default class Section extends Model {
-  protected _img:string;
+  protected _img?:string;
   protected _content:string;
   protected _project_id:number;
 
@@ -21,7 +21,7 @@ export default class Section extends Model {
 
   // ======== GETTERS =========
 
-  public get img():string {
+  public get img():string | undefined {
     return this._img;
   }
 
