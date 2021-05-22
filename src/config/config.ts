@@ -3,7 +3,7 @@ const fs = require('fs');
 // ====================================
 // Puerto
 // ====================================
-const port:number|string = process.env.PORT || 4000;
+const port:number|string = process.env.PORT || 3000;
 
 // ====================================
 // Entorno
@@ -19,7 +19,9 @@ const dropboxEnv = nodeEnv === 'development' || 'test' ? fs.readFileSync('keys/d
 // Session Confog
 // ====================================
 class SessionConf {
-  
+  static secret: string = nodeEnv === 'development' || "test" ? fs.readFileSync('keys/session.key', 'utf8') : process.env.SESSION_SECRET || '';
+   
+  static maxAge: number = 2 * 24 * 60 * 60 * 1000; // 48h
 }
 
 // ====================================
@@ -43,8 +45,8 @@ class JwtEnv {
     algorithm:  ["RS256"]
   };
 
-  static publicKey:string = nodeEnv === 'development' || "test" ? fs.readFileSync('keys/public.key', 'utf8') : (<any>process.env.PUBLICUS_KEY).replace(/\\n/gm, '\n') || '';
-  static privateKey:string = nodeEnv === 'development' || "test" ? fs.readFileSync('keys/private.key', 'utf8') : (<any>process.env.PRIVATEUS_KEY).replace(/\\n/gm, '\n' || '');
+  static publicKey:string = nodeEnv === 'development' || "test" ? fs.readFileSync('keys/public.key', 'utf8') : (<any>process.env.PUBLICAD_KEY).replace(/\\n/gm, '\n') || '';
+  static privateKey:string = nodeEnv === 'development' || "test" ? fs.readFileSync('keys/private.key', 'utf8') : (<any>process.env.PRIVATEAD_KEY).replace(/\\n/gm, '\n' || '');
    
 }
 
