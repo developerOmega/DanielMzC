@@ -15,9 +15,9 @@ export interface AdminData {
 
 // Interfaz para Sliders
 export interface SliderData {
-  img: string,
+  img?: string,
   content: string,
-  url: string,
+  url?: string,
   admin_id: number
 }
 
@@ -25,7 +25,7 @@ export interface SliderData {
 export interface ProjectData {
   title: string,
   description: string,
-  main_img: string,
+  main_img?: string,
   admin_id: number
 }
 
@@ -34,7 +34,7 @@ export interface BlogData {
   title: string,
   description: string,
   content: string,
-  main_img: string,
+  main_img?: string,
   admin_id: number
 }
 

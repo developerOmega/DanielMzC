@@ -8,7 +8,7 @@ export default class Blog extends Model {
   protected _title:string;
   protected _description:string;
   protected _content:string;
-  protected _main_img:string;
+  protected _main_img?:string;
   protected _admin_id:number;
 
   static ins: Blog;
@@ -38,7 +38,7 @@ export default class Blog extends Model {
     return this._content;
   }
 
-  public get main_img():string {
+  public get main_img():string | undefined{
     return this._main_img;
   }
 

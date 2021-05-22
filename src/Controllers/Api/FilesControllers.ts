@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import DropboxApi from '../dropbox';
-import Model from '../Models/Model';
+import DropboxApi from '../../dropbox';
+import Model from '../../Models/Model';
 
 // Clase padre que maneja los controladores para subir archivos
 export default class FilesController {
@@ -17,7 +17,7 @@ export default class FilesController {
   // Modelo d tabla
   protected ins = Model;
   
-  constructor( ) {
+  constructor() {
     this.fileName  = '/images/main_image.png';
     this.pref = 'us-img';
     this.prop = 'img'; 
@@ -33,14 +33,15 @@ export default class FilesController {
 
   // Controlador para subir imagenes del registor
   public async post(req: Request, res: Response) {
+
     // Capturar id de regidtro
     let id:number = parseInt(req.params.id);
-
+    
     // Capturar datos del archivo que se subio al momento de hacer la peticion
-    let img = (<any>req.files).img;
+    let img = eval('req.files.' + this.prop);
     
     // Crear nombre de imagen para dropbox 
-    let filename = `${id}${Date.now()}${this.pref}${img.name}`;
+    let filename = `${this.pref}_${Date.now()}${img.name}`;
 
     // Indicar que el nombre de la imagen dropbox esta en una ruta
     let path = `/${filename}`;
@@ -50,8 +51,8 @@ export default class FilesController {
       // pasar parametros de ruta de carpeta y datos de la imagen
       const file = await DropboxApi.on().upload(path, img.data);
 
-       // Capturar imagen publicada en dropbox
-       let dataPath = file.result.path_display;
+      // Capturar imagen publicada en dropbox
+      let dataPath = file.result.path_display;
 
       // Metodo para crear un link publico de archivo de dropbox
       // parasar parametros: img publicada
@@ -62,6 +63,7 @@ export default class FilesController {
 
        // Actualizar columna de imagen de Modelo
        let data = await instance.update(this.updateTo( this.ins.imageUrl(publicLink.result.url) ));
+
 
        return res.json({
          ok: true,
@@ -103,7 +105,7 @@ export default class FilesController {
       const file = await DropboxApi.on().delete(path); 
       
       // Actualizar columna de la imagen del Modelo a ruta por default
-      let data = instance.Z(this.updateTo(this.fileName));
+      let data = instance.update(this.updateTo(this.fileName));
       
       return res.status(200).json({
         ok: true,
@@ -126,7 +128,7 @@ export default class FilesController {
   // Controlador para editar imagenes del registor
   public async update(req: Request, res: Response) {
     let id:number = parseInt(req.params.id);
-    let img = (<any>req.files).img;
+    let img = eval('req.files.' + this.prop);
 
     let instance = await this.ins.byId(id);
 
@@ -139,12 +141,12 @@ export default class FilesController {
 
     let path:string = this.ins.getImg( eval('instance.' + this.prop) );
     
-    let filename = `${id}${Date.now()}${img.name}`;
-    let newPath = `/${filename}`;
+    let filename = `${this.pref}_${Date.now()}${img.name}`;
+    let nPath = `/${filename}`;
 
     try {
-
-      const file = await DropboxApi.on().update(path, newPath, img.data);
+      
+      const file = await DropboxApi.on().update(path, nPath, img.data);
 
       let instance = await this.ins.byId(id);
 

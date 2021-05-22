@@ -11,9 +11,19 @@ export default class BlogFilesControllers extends FilesController {
   // propiedad que es igualada a la instancia del modelo
   protected ins = Blog
 
-  constructor( ) {
+  // Propiedad que almacena el nombre de parametro a editar dentro de la tabla del modelo
+  protected prop:string;
+
+  constructor() {
     super();
-    this.pref = 'blg-img'; 
+    this.pref = 'blg-img';
+    this.prop = 'main_img'
+  }
+
+  protected updateTo(url:string | undefined):Object {
+    return {
+      main_img: url
+    }
   }
 
 }

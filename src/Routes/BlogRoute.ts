@@ -1,4 +1,4 @@
-import {Router} from 'express';
+import {Router, Request, Response} from 'express';
 import BlogController from '../Controllers/BlogController';
 import BlogControllerAdmin from '../Controllers/Admin/BlogController';
 import BlogFilesControllers from '../Controllers/Api/v1/BlogFilesController';
@@ -19,8 +19,8 @@ router.get('/admin_panel/blogs/edit/:id', BLOG_IN_ADMIN.edit);
 router.put('/admin_panel/blogs/:id', BLOG_IN_ADMIN.update);
 router.delete('/admin_panel/blogs/:id', BLOG_IN_ADMIN.delete);
 
-router.post('/api/v1/blogs/:id/img', BLOG_FILE.post);
-router.put('/api/v1/blogs/:id/img', BLOG_FILE.update);
-router.delete('/api/v1/blogs/:id/img', BLOG_FILE.delete);
+router.post('/api/v1/blogs/:id/img', (req: Request, res: Response) => BLOG_FILE.post(req, res));
+router.put('/api/v1/blogs/:id/img', (req: Request, res: Response) => BLOG_FILE.update(req, res));
+router.delete('/api/v1/blogs/:id/img', (req: Request, res: Response) => BLOG_FILE.delete(req, res));
 
 export default router;

@@ -1,4 +1,4 @@
-import {Router} from 'express';
+import {Router, Request, Response} from 'express';
 import ProjectController from '../Controllers/ProjectController';
 import ProjectControllerAdmin from '../Controllers/Admin/ProjectController';
 import ProjectFilesController from '../Controllers/Api/v1/ProjectFilesController';
@@ -19,8 +19,8 @@ router.get('/admin_panel/projects/edit/:id', PROJECT_IN_ADMIN.edit);
 router.put('/admin_panel/projects/:id', PROJECT_IN_ADMIN.update);
 router.delete('/admin_panel/projects/:id', PROJECT_IN_ADMIN.delete);
 
-router.post('/api/v1/projects/:id/img', PROJECT_FILE.post);
-router.put('/api/v1/projects/:id/img', PROJECT_FILE.update);
-router.delete('/api/v1/projects/:id/img', PROJECT_FILE.delete);
+router.post('/api/v1/projects/:id/img', (req: Request, res: Response) => PROJECT_FILE.post(req, res));
+router.put('/api/v1/projects/:id/img', (req: Request, res: Response) => PROJECT_FILE.update(req, res));
+router.delete('/api/v1/projects/:id/img', (req: Request, res: Response) => PROJECT_FILE.delete(req, res));
 
 export default router;

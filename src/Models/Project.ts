@@ -7,7 +7,7 @@ interface ModelAndProject extends ModelData, ProjectData {}
 export default class Project extends Model {
   protected _title:string;
   protected _description:string;
-  protected _main_img: string;
+  protected _main_img?: string;
   protected _admin_id:number;
 
   static ins: Project;
@@ -31,7 +31,7 @@ export default class Project extends Model {
     return this._description;
   }
 
-  public get main_img():string {
+  public get main_img():string | undefined{
     return this._main_img;
   }
 

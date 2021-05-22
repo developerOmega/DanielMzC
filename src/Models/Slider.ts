@@ -5,7 +5,7 @@ import { SliderData, ModelData } from '../interfaces/Models';
 interface ModelAndSlider extends SliderData, ModelData {};
 
 export default class Slider extends Model {
-  protected _img:string;
+  protected _img?:string;
   protected _content:string;
   protected _url?:string;
   protected _admin_id:number;
@@ -23,7 +23,7 @@ export default class Slider extends Model {
 
   // ======== GETTERS ==========
 
-  public get img():string {
+  public get img():string | undefined{
     return this._img;
   }
 

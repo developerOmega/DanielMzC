@@ -1,6 +1,7 @@
 import fetch = require('isomorphic-fetch');
 const Dropbox = require('dropbox').Dropbox;
 import { dropboxEnv } from '../config/config';
+const fs = require('fs');
 
 // Clase que ejecuta api de Dropbox
 export default class DropboxApi {
@@ -10,7 +11,7 @@ export default class DropboxApi {
     constructor(){
       // Instancia de dropbox
       // pasar clave de token y libreria fetch como parametros  
-      this.dbx = new Dropbox({accessToken: dropboxEnv, fetch});  
+      this.dbx = new Dropbox({accessToken: dropboxEnv, fetch});
     }
 
     // Inicializar calse
@@ -81,12 +82,12 @@ export default class DropboxApi {
     //      contents:img(data de la imagen)    
     async update(path:string, newPath:string, contents:any) {
       try {
-        await this.dbx.filesDelete({path});
-        
-        const img = await this.dbx.filesUpload({newPath, contents});
+        await this.dbx.filesDelete({path});        
+
+        const img = await this.upload(newPath, contents);
         const dataPath = img.result.path_display;
 
-        const data = await this.dbx.sharingCreateSharedLinkWithSettings({ dataPath });
+        const data = await this.sharedLink(dataPath);
         return data;
 
       } catch (error) {

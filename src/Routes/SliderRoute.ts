@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import SliderController from '../Controllers/Admin/SliderController';
 import SliderFilesController from '../Controllers/Api/v1/SliderFilesController';
 
@@ -15,8 +15,8 @@ router.put('/admin_panel/sliders/:id', SLIDER.update);
 router.delete('/admin_panel/sliders/:id', SLIDER.delete);
 
 
-router.post('/api/v1/sliders/:id/img', SLIDER_FILES.post);
-router.put('/api/v1/sliders/:id/img', SLIDER_FILES.update);
-router.delete('/api/v1/sliders/:id/img', SLIDER_FILES.delete);
+router.post('/api/v1/sliders/:id/img', (req: Request, res: Response) => SLIDER_FILES.post(req, res));
+router.put('/api/v1/sliders/:id/img', (req: Request, res: Response) => SLIDER_FILES.update(req, res));
+router.delete('/api/v1/sliders/:id/img', (req: Request, res: Response) => SLIDER_FILES.delete(req, res));
 
 export default router;
