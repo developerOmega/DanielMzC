@@ -53,7 +53,7 @@ export default class ProjectController {
         title: body.title,
         description: body.description,
         main_img: body.main_img,
-        admin_id: body.admin_id
+        admin_id: req.session.admin.id
       }
 
       const project = await Project.create(params);
@@ -93,6 +93,8 @@ export default class ProjectController {
   public async update(req: Request, res: Response) {
     let id: number = parseInt(req.params.id);
     let body = req.body;
+
+    delete body.admin_id
     try {
       
       const project = await Project.byId(id);

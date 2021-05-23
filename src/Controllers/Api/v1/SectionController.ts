@@ -87,6 +87,8 @@ export default class SectionController {
   public async update(req: Request, res: Response) {
     let id: number = parseInt(req.params.id);
     let body = req.body;
+
+    delete body.project_id;
     try {
       
       const sectionData = await Section.byId(id);

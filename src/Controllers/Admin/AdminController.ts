@@ -98,6 +98,8 @@ export default class AdminController {
   public async update(req: Request, res: Response) {
     let id:number = parseInt(req.params.id);
     let body = req.body;
+
+    body = delete body.password;
   
     try {
       let admin = await Admin.byId(id);

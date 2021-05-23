@@ -53,7 +53,7 @@ export default class SliderController {
         img: body.img,
         content: body.content,
         url: body.url,
-        admin_id: body.admin_id
+        admin_id: req.session.admin.id
       }
 
       const slider = await Slider.create(params);
@@ -93,6 +93,8 @@ export default class SliderController {
   public async update(req: Request, res: Response) {
     let id: number = parseInt(req.params.id);
     let body = req.body;
+
+    delete body.admin_id
     try {
       
       const slider = await Slider.byId(id);
