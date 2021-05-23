@@ -5,10 +5,22 @@ import Admin from '../src/Models/Admin';
 import Slider from '../src/Models/Slider';
 import Blog from '../src/Models/Blog';
 import Project from '../src/Models/Project';
+import bcrypt from 'bcrypt';
 
 
 afterAll(async () => {
+  let admin = await Admin.last();
+  await admin.delete();
   await db.connection.end();
+});
+
+beforeAll(async () => {
+  await Admin.create({
+    name: "Taco",
+    email: "taco@email.com",
+    password: bcrypt.hashSync("qwerty123", 10),
+    is_su_admin: true
+  })
 });
 
 describe("Test admin admins routes", () => {
@@ -32,8 +44,8 @@ describe("Test admin admins routes", () => {
     const response = await request(server.app)
       .post('/admin_panel/admins')
       .send({
-        name: "Taco",
-        email: "taco@email.com",
+        name: "Taco2",
+        email: "taco2@email.com",
         password: "qwerty123",
         is_su_admin: false
       })

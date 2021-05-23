@@ -15,7 +15,7 @@ export default class BlogController {
       })
 
     } catch (error) {
-      res.redirect('back', 500);
+      res.redirect(500, 'back');
     }
   }
 
@@ -26,7 +26,7 @@ export default class BlogController {
       const blog = await Blog.byId(id);
       
       if(!blog.id) {
-        return res.redirect('back', 400);
+        return res.redirect(400, 'back');
       }
 
       return res.render('admin_panel/blogs/show', {
@@ -35,7 +35,7 @@ export default class BlogController {
       });
 
     } catch (error) {
-      res.redirect('back', 500);
+      res.redirect(500, 'back');
     }
   }
 
@@ -60,13 +60,13 @@ export default class BlogController {
       const blog = await Blog.create(params);
 
       if(!blog.id){
-        return res.redirect('back', 400);
+        return res.redirect(400, 'back');
       }
 
-      return res.redirect(`/admin_panel/blogs/show/${blog.id}`, 201);     
+      return res.redirect(201, `/admin_panel/blogs/show/${blog.id}`);     
 
     } catch (error) {
-      res.redirect('back', 500)
+      res.redirect(500, 'back')
     }
   }
 
@@ -78,7 +78,7 @@ export default class BlogController {
       const blog = await Blog.byId(id);
 
       if(!blog.id) {
-        return res.redirect('back', 404)
+        return res.redirect(404, 'back')
       }
 
       return res.render('admin_panel/blogs/edit', {
@@ -87,7 +87,7 @@ export default class BlogController {
       });
 
     } catch (error) {
-      return res.redirect('back', 500);
+      return res.redirect(500, 'back');
     }
   }
 
@@ -99,15 +99,15 @@ export default class BlogController {
       const blog = await Blog.byId(id);
       
       if(!blog) {
-        return res.redirect('back', 404);
+        return res.redirect(404, 'back');
       }
 
       await blog.update(body);
 
-      return res.redirect(`/admin_panel/blogs/show/${blog.id}`, 201);
+      return res.redirect(201, `/admin_panel/blogs/show/${blog.id}`);
 
     } catch (error) {
-      return res.redirect('back', 500)
+      return res.redirect(500, 'back')
     }
   }
 
@@ -118,15 +118,15 @@ export default class BlogController {
       const blog = await Blog.byId(id);
       
       if(!blog) {
-        return res.redirect('back', 404);
+        return res.redirect(404, 'back');
       }
 
       await blog.delete();
 
-      return res.redirect(`/admin_panel/blogs`, 201);
+      return res.redirect(201, `/admin_panel/blogs`);
 
     } catch (error) {
-      return res.redirect('back', 500);
+      return res.redirect(500, 'back');
     }
   }
 

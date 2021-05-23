@@ -15,7 +15,7 @@ export default class ProjectController {
       })
 
     } catch (error) {
-      res.redirect('back', 500);
+      res.redirect(500, 'back');
     }
   }
 
@@ -26,7 +26,7 @@ export default class ProjectController {
       const project = await Project.byId(id);
       
       if(!project.id) {
-        return res.redirect('back', 400);
+        return res.redirect(400, 'back');
       }
 
       return res.render('admin_panel/projects/show', {
@@ -35,7 +35,7 @@ export default class ProjectController {
       });
 
     } catch (error) {
-      res.redirect('back', 500);
+      res.redirect(500, 'back');
     }
   }
 
@@ -59,13 +59,13 @@ export default class ProjectController {
       const project = await Project.create(params);
 
       if(!project.id){
-        return res.redirect('back', 400);
+        return res.redirect(400, 'back');
       }
 
-      return res.redirect(`/admin_panel/projects/show/${project.id}`, 201);     
+      return res.redirect(201, `/admin_panel/projects/show/${project.id}`);     
 
     } catch (error) {
-      res.redirect('back', 500)
+      res.redirect(500, 'back')
     }
   }
 
@@ -77,7 +77,7 @@ export default class ProjectController {
       const project = await Project.byId(id);
 
       if(!project.id) {
-        return res.redirect('back', 404)
+        return res.redirect(404, 'back')
       }
 
       return res.render('admin_panel/projects/edit', {
@@ -86,7 +86,7 @@ export default class ProjectController {
       });
 
     } catch (error) {
-      return res.redirect('back', 500);
+      return res.redirect(500, 'back');
     }
   }
 
@@ -98,15 +98,15 @@ export default class ProjectController {
       const project = await Project.byId(id);
       
       if(!project) {
-        return res.redirect('back', 404);
+        return res.redirect(404, 'back');
       }
 
       await project.update(body);
 
-      return res.redirect(`/admin_panel/projects/show/${project.id}`, 201);
+      return res.redirect(201, `/admin_panel/projects/show/${project.id}`);
 
     } catch (error) {
-      return res.redirect('back', 500)
+      return res.redirect(500, 'back')
     }
   }
 
@@ -117,15 +117,15 @@ export default class ProjectController {
       const project = await Project.byId(id);
       
       if(!project) {
-        return res.redirect('back', 404);
+        return res.redirect(404, 'back');
       }
 
       await project.delete();
 
-      return res.redirect(`/admin_panel/projects`, 201);
+      return res.redirect(201, `/admin_panel/projects`);
 
     } catch (error) {
-      return res.redirect('back', 500);
+      return res.redirect(500, 'back');
     }
   }
 

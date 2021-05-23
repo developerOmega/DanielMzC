@@ -17,7 +17,7 @@ export default class AdminController {
 
 
     } catch (err) {
-      res.redirect("back");
+      res.redirect(500, "back");
     }
 
   }
@@ -38,7 +38,7 @@ export default class AdminController {
       });
 
     } catch (error) {
-      res.redirect("back");
+      res.redirect(500, "back");
     }
 
   }
@@ -68,10 +68,10 @@ export default class AdminController {
         return res.redirect('back');
       }
 
-      return res.redirect(`/admin_panel/admins/show/${admin.id}`, 201)
+      return res.redirect(201, `/admin_panel/admins/show/${admin.id}`)
 
     } catch (err) {
-      res.redirect('back')
+      res.redirect(500, 'back')
     }
   }
 
@@ -82,7 +82,7 @@ export default class AdminController {
       let admin = await Admin.byId(id);
 
       if(!admin.id) {
-        res.redirect("back");
+        res.redirect(404, "back");
       }
       
       res.render('admin_panel/admins/edit', {
@@ -90,7 +90,7 @@ export default class AdminController {
         admin
       });
     } catch (error) {
-      res.redirect("back")     
+      res.redirect(500, "back")     
     }
  
   }
@@ -103,14 +103,14 @@ export default class AdminController {
       let admin = await Admin.byId(id);
       
       if(!admin){
-        return res.redirect('back');
+        return res.redirect(404, 'back');
       }
 
       await admin.update(body);
-      return res.redirect(`/admin_panel/admins/show/${admin.id}`, 201);
+      return res.redirect(201, `/admin_panel/admins/show/${admin.id}`);
 
     } catch (error) {
-      res.redirect('back');
+      res.redirect(500, 'back');
     }
   }
 
@@ -122,14 +122,14 @@ export default class AdminController {
       let admin = await Admin.byId(id)
       
       if(!admin){
-        return res.redirect('back');
+        return res.redirect(404, 'back');
       }
       
       await admin.delete();
-      return res.redirect('/admin_panel/admins', 201)
+      return res.redirect(201, '/admin_panel/admins')
     
     } catch (error) {
-      res.redirect('back');
+      res.redirect(500, 'back');
     }
   }
 }

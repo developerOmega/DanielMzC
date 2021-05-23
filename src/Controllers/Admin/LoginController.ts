@@ -1,13 +1,6 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 import Admin from '../../Models/Admin';
-import { JwtEnv } from '../../config/config';
-import { db } from '../../db/db';
-
-afterAll(async () => {
-  await db.connection.end();
-});
 
 export default class LoginController {
 
@@ -22,29 +15,35 @@ export default class LoginController {
       const admin = await Admin.byEmail(body.email);
       
       if(!admin) {
-        return res.redirect('back', 404);
+        return res.redirect(404, 'back');
       }
 
       if(!bcrypt.compareSync(body.password, admin.password)){
-        return res.redirect('back', 401);
+        return res.redirect(401, 'back');
       }
 
-      const token = jwt.sign({admin}, JwtEnv.privateKey, JwtEnv.signOptions );
+      const adminData = {
+        id: admin.id,
+        name: admin.name,
+        email: admin.email,
+        password: admin.password,
+        is_su_admin: admin.is_su_admin,
+        updated_at: admin.updated_at,
+        created_at: admin.created_at,
+      }
 
-      req.session.admin = admin;
-      req.session.token = token;
+      req.session.admin = adminData;
 
-      return res.redirect('/admin_panel/blogs', 201);
-
+      return res.redirect(201, '/admin_panel/admins');
 
     } catch (error) {
-      return res.redirect('back', 500);
+      return res.redirect(500, 'back');
     }
   }
 
   public async delete(req: Request, res: Response) {
     req.session.destroy(() => {});
-    res.redirect('/', 201);
+    res.redirect(201, '/');
   }
 
 }

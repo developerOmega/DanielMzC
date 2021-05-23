@@ -26,10 +26,12 @@ server.app.use(session({
   secret: SessionConf.secret,
   resave: true,
   saveUninitialized: true,
+  unset: 'destroy',
   cookie: {
-    maxAge: SessionConf.maxAge
+    maxAge: SessionConf.maxAge,
+    secure: true
   }
-}))
+}));
 
 addRouter();
 
