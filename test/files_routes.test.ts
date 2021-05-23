@@ -6,17 +6,46 @@ import Blog from '../src/Models/Blog';
 import Project from '../src/Models/Project';
 import Slider from '../src/Models/Slider';
 import Section from '../src/Models/Section';
+import Admin from '../src/Models/Admin';
+import bcrypt from 'bcrypt';
 
 const img = "/home/daniel/Imágenes/edward-norton.jpg";
 const imgEdit = "/home/daniel/Imágenes/payaso.jpg";
+let token:string;
 
 jest.setTimeout(15000);
 
 afterAll(async () => {
+  let admin = await Admin.last();
+  await admin.delete();
   await db.connection.end();
 });
 
-describe("Test blog files", () => {
+beforeAll(async () => {
+  await Admin.create({
+    name: "Taco",
+    email: "taco@email.com",
+    password: bcrypt.hashSync("qwerty123", 10),
+    is_su_admin: true
+  })
+});
+
+  test("It should auth session", async () => {
+    const admin = await Admin.last();
+  
+    const response = await request(server.app)
+      .post('/api/v1/auth')
+      .send({
+        email: admin.email,
+        password: "qwerty123"
+      });
+    
+    token = response.body.token;
+    expect(response.statusCode).toEqual(200);
+  });
+
+
+describe("Test blog files", () => {  
 
   beforeAll(async () => {
     const params: BlogData = {
@@ -32,13 +61,14 @@ describe("Test blog files", () => {
   afterAll(async () => {
     const blog = await Blog.first(); 
     await blog.delete();
-  })
+  });
 
   test("It should upload blog main_img", async () => {
     const blog = await Blog.first();
 
     const response = await request(server.app)
       .post(`/api/v1/blogs/${blog.id}/img`)
+      .set('Authorization', token)
       .attach('main_img', img);
 
     expect(response.statusCode).toBe(200);
@@ -49,6 +79,7 @@ describe("Test blog files", () => {
     
     const response = await request(server.app)
       .put(`/api/v1/blogs/${blog.id}/img`)
+      .set('Authorization', token)
       .attach('main_img', imgEdit);
 
     expect(response.statusCode).toBe(200);
@@ -58,7 +89,8 @@ describe("Test blog files", () => {
     const blog = await Blog.first();
     
     const response = await request(server.app)
-      .delete(`/api/v1/blogs/${blog.id}/img`);
+      .delete(`/api/v1/blogs/${blog.id}/img`)
+      .set('Authorization', token);
 
     expect(response.statusCode).toBe(200);
   });
@@ -87,6 +119,7 @@ describe("Test sliders files", () => {
 
     const response = await request(server.app)
       .post(`/api/v1/sliders/${slider.id}/img`)
+      .set('Authorization', token)
       .attach('img', img);
 
     expect(response.statusCode).toBe(200);
@@ -97,6 +130,7 @@ describe("Test sliders files", () => {
     
     const response = await request(server.app)
       .put(`/api/v1/sliders/${slider.id}/img`)
+      .set('Authorization', token)
       .attach('img', imgEdit);
 
     expect(response.statusCode).toBe(200);
@@ -106,7 +140,8 @@ describe("Test sliders files", () => {
     const slider = await Slider.first();
     
     const response = await request(server.app)
-      .delete(`/api/v1/sliders/${slider.id}/img`);
+      .delete(`/api/v1/sliders/${slider.id}/img`)
+      .set('Authorization', token);
 
     expect(response.statusCode).toBe(200);
   });
@@ -144,6 +179,7 @@ describe("Test projects and sections files", () => {
 
     const response = await request(server.app)
       .post(`/api/v1/projects/${project.id}/img`)
+      .set('Authorization', token)
       .attach('main_img', img);
 
     expect(response.statusCode).toBe(200);
@@ -154,6 +190,7 @@ describe("Test projects and sections files", () => {
     
     const response = await request(server.app)
       .put(`/api/v1/projects/${project.id}/img`)
+      .set('Authorization', token)
       .attach('main_img', imgEdit);
 
     expect(response.statusCode).toBe(200);
@@ -163,7 +200,8 @@ describe("Test projects and sections files", () => {
     const project = await Project.first();
     
     const response = await request(server.app)
-      .delete(`/api/v1/projects/${project.id}/img`);
+      .delete(`/api/v1/projects/${project.id}/img`)
+      .set('Authorization', token);
 
     expect(response.statusCode).toBe(200);
   });
@@ -178,6 +216,7 @@ describe("Test projects and sections files", () => {
   
     const response = await request(server.app)
       .post(`/api/v1/sections/${section.id}/img`)
+      .set('Authorization', token)
       .attach('img', img);
   
     expect(response.statusCode).toBe(200);
@@ -188,6 +227,7 @@ describe("Test projects and sections files", () => {
     
     const response = await request(server.app)
       .put(`/api/v1/sections/${section.id}/img`)
+      .set('Authorization', token)
       .attach('img', imgEdit);
   
     expect(response.statusCode).toBe(200);
@@ -197,7 +237,8 @@ describe("Test projects and sections files", () => {
     const section = await Section.first();
     
     const response = await request(server.app)
-      .delete(`/api/v1/sections/${section.id}/img`);
+      .delete(`/api/v1/sections/${section.id}/img`)
+      .set('Authorization', token);
   
     expect(response.statusCode).toBe(200);
   });

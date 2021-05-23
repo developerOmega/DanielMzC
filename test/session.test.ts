@@ -1,6 +1,23 @@
 const request = require('supertest');
 import {server} from '../src/app';
 import Admin from '../src/Models/Admin';
+import bcrypt from 'bcrypt';
+import { db } from '../src/db/db';
+
+afterAll(async () => {
+  let admin = await Admin.last();
+  await admin.delete();
+  await db.connection.end();
+});
+
+beforeAll(async () => {
+  await Admin.create({
+    name: "Taco",
+    email: "taco@email.com",
+    password: bcrypt.hashSync("qwerty123", 10),
+    is_su_admin: true
+  })
+});
 
 describe("Test session", () => {
 
@@ -8,19 +25,6 @@ describe("Test session", () => {
     const response = await request(server.app).get('/admin_panel/login');
     expect(response.statusCode).toBe(200);
   });
-
-  test("It should create Admin", async () => {
-    const response = await request(server.app)
-      .post('/admin_panel/admins')
-      .send({
-        name: "Taco",
-        email: "taco@email.com",
-        password: "qwerty123",
-        is_su_admin: true
-      });
-
-    expect(response.statusCode).toEqual(201);
-  })
 
   test("It should Login session", async () => {
     const admin = await Admin.last();
@@ -42,11 +46,21 @@ describe("Test session", () => {
     expect(response.statusCode).toEqual(201);
   });
 
-  test("It should delete Admin", async () => {
-    const admin = await Admin.last();
-    const response = await request(server.app)
-      .delete(`/admin_panel/admins/${admin.id}`);
-
-    expect(response.statusCode).toEqual(201);
-  })
 });
+
+describe("Test auth jwt", () => {
+  test("It should auth session", async () => {
+    const admin = await Admin.last();
+
+    const response = await request(server.app)
+      .post('/api/v1/auth')
+      .send({
+        email: admin.email,
+        password: "qwerty123"
+      });
+    
+    console.log(response.body);
+
+    expect(response.statusCode).toEqual(200);
+  });
+})

@@ -17,6 +17,6 @@ router.post('/admin_panel/admins', [authSession, authSuAdmin], ADMIN_IN_ADMIN.cr
 router.put('/admin_panel/admins/:id', [authSession, authSuAdmin], ADMIN_IN_ADMIN.update);
 router.delete('/admin_panel/admins/:id', [authSession, authSuAdmin], ADMIN_IN_ADMIN.delete);
 
-router.get('/api/v1/auth', ADMIN_API.login);
+router.post('/api/v1/auth', ADMIN_API.login);
 
 export default router;
