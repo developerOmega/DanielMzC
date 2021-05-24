@@ -59,13 +59,13 @@ export default class SliderController {
       const slider = await Slider.create(params);
 
       if(!slider.id){
-        return res.redirect(400, 'back');
+        return res.redirect('back');
       }
 
-      return res.redirect(201, `/admin_panel/sliders/show/${slider.id}`);     
+      return res.redirect(`/admin_panel/sliders/show/${slider.id}`);     
 
     } catch (error) {
-      res.redirect(500, 'back')
+      res.redirect('back')
     }
   }
 
@@ -77,7 +77,7 @@ export default class SliderController {
       const slider = await Slider.byId(id);
 
       if(!slider.id) {
-        return res.redirect(404, 'back')
+        return res.redirect('back')
       }
 
       return res.render('admin_panel/sliders/edit', {
@@ -86,7 +86,7 @@ export default class SliderController {
       });
 
     } catch (error) {
-      return res.redirect(500, 'back');
+      return res.redirect('back');
     }
   }
 
@@ -100,15 +100,15 @@ export default class SliderController {
       const slider = await Slider.byId(id);
       
       if(!slider) {
-        return res.redirect(404, 'back');
+        return res.redirect('back');
       }
 
       await slider.update(body);
 
-      return res.redirect(201, `/admin_panel/blogs/show/${slider.id}`);
+      return res.redirect(`/admin_panel/blogs/show/${slider.id}`);
 
     } catch (error) {
-      return res.redirect(500, 'back')
+      return res.redirect('back')
     }
   }
 
@@ -119,15 +119,15 @@ export default class SliderController {
       const slider = await Slider.byId(id);
       
       if(!slider) {
-        return res.redirect(404, 'back');
+        return res.redirect('back');
       }
 
       await slider.delete();
 
-      return res.redirect(201, `/admin_panel/blogs`);
+      return res.redirect(`/admin_panel/blogs`);
 
     } catch (error) {
-      return res.redirect(500, 'back');
+      return res.redirect('back');
     }
   }
 

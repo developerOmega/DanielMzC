@@ -15,11 +15,11 @@ export default class LoginController {
       const admin = await Admin.byEmail(body.email);
       
       if(!admin) {
-        return res.redirect(404, 'back');
+        return res.redirect('back');
       }
 
       if(!bcrypt.compareSync(body.password, admin.password)){
-        return res.redirect(401, 'back');
+        return res.redirect('back');
       }
 
       const adminData = {
@@ -34,16 +34,16 @@ export default class LoginController {
 
       req.session.admin = adminData;
 
-      return res.redirect(201, '/admin_panel/admins');
+      return res.redirect('/admin_panel/admins');
 
     } catch (error) {
-      return res.redirect(500, 'back');
+      return res.redirect('back');
     }
   }
 
   public async delete(req: Request, res: Response) {
     req.session.destroy(() => {});
-    res.redirect(201, '/');
+    res.redirect('/');
   }
 
 }

@@ -5,7 +5,7 @@ const authSession = (req: Request, res: Response, next: NextFunction) => {
   
   // Si la sesion no existe, regresar a la pagina anterior
   if( !req.session.admin ) {
-    return res.redirect(403, 'back');
+    return res.redirect('back');
   }
 
   next();
