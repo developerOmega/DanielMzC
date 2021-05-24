@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 export default class BlogController {
   public index(req: Request, res: Response) {
     res.render('blogs/index', {
+      layout: 'layouts/main',
       titlePage: "Blogs"
     })
   }
@@ -11,7 +12,8 @@ export default class BlogController {
     let id:any = req.params.id;
     
     res.render('blogs/show', {
-      titlePage: `blog ${id} `
+      layout: 'layouts/main',
+      titlePage: `blog ${id}`
     });
   }
 }
