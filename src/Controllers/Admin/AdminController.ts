@@ -11,6 +11,7 @@ export default class AdminController {
       let admins = await Admin.all();
 
       res.render('admin_panel/admins/index', {
+        layout: 'layouts/admin',
         titlePage: "Admins",
         admins
       });
@@ -33,6 +34,7 @@ export default class AdminController {
       }
 
       res.render('admin_panel/admins/show', {
+        layout: 'layouts/admin',
         titlePage: admin.name,
         admin
       });
@@ -45,6 +47,7 @@ export default class AdminController {
 
   public new(req: Request, res: Response) {
     res.render('admin_panel/admins/new', {
+      layout: 'layouts/admin',
       titlePage: "New Admin"
     });
   }
@@ -60,8 +63,6 @@ export default class AdminController {
         is_su_admin: body.is_su_admin
       }
 
-      
-      
       let admin = await Admin.create(params);
       
       if(!admin.id){
@@ -86,6 +87,7 @@ export default class AdminController {
       }
       
       res.render('admin_panel/admins/edit', {
+        layout: 'layouts/admin',
         titlePage: admin.name,
         admin
       });

@@ -5,7 +5,9 @@ import Admin from '../../Models/Admin';
 export default class LoginController {
 
   public index(req: Request, res: Response) {
-    res.render('admin_panel/login/index');
+    res.render('admin_panel/login/index', {
+      layout: 'layouts/main'
+    });
   }
 
   public async create(req: Request, res: Response) {

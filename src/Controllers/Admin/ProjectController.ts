@@ -10,6 +10,7 @@ export default class ProjectController {
       const projects = await Project.all();
 
       res.render('admin_panel/projects/index', {
+        layout: 'layouts/admin',
         titlePage: "Sliders",
         projects
       })
@@ -30,6 +31,7 @@ export default class ProjectController {
       }
 
       return res.render('admin_panel/projects/show', {
+        layout: 'layouts/admin',
         titlePage: project.title,
         project
       });
@@ -41,6 +43,7 @@ export default class ProjectController {
 
   public new(req: Request, res: Response) {
     res.render('admin_panel/projects/new', {
+      layout: 'layouts/admin',
       titlePage: "New project"
     });
   }
@@ -81,6 +84,7 @@ export default class ProjectController {
       }
 
       return res.render('admin_panel/projects/edit', {
+        layout: 'layouts/admin',
         titlePage: project.title,
         project
       });

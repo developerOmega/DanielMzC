@@ -10,6 +10,7 @@ export default class SliderController {
       const sliders = await Slider.all();
 
       res.render('admin_panel/sliders/index', {
+        layout: 'layouts/admin',
         titlePage: "Sliders",
         sliders
       })
@@ -30,6 +31,7 @@ export default class SliderController {
       }
 
       return res.render('admin_panel/sliders/show', {
+        layout: 'layouts/admin',
         titlePage: `Slider ${slider.id}`,
         slider
       });
@@ -41,6 +43,7 @@ export default class SliderController {
 
   public new(req: Request, res: Response) {
     res.render('admin_panel/sliders/new', {
+      layout: 'layouts/admin',
       titlePage: "New Slider"
     });
   }
@@ -81,6 +84,7 @@ export default class SliderController {
       }
 
       return res.render('admin_panel/sliders/edit', {
+        layout: 'layouts/admin',
         titlePage: `Edit Slider ${slider.id}`,
         slider
       });

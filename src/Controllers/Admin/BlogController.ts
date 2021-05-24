@@ -10,6 +10,7 @@ export default class BlogController {
       const blogs = await Blog.all();
 
       res.render('admin_panel/blogs/index', {
+        layout: 'layouts/admin',
         titlePage: "Sliders",
         blogs
       })
@@ -30,6 +31,7 @@ export default class BlogController {
       }
 
       return res.render('admin_panel/blogs/show', {
+        layout: 'layouts/admin',
         titlePage: blog.title,
         blog
       });
@@ -41,6 +43,7 @@ export default class BlogController {
 
   public new(req: Request, res: Response) {
     res.render('admin_panel/blogs/new', {
+      layout: 'layouts/admin',
       titlePage: "New Blog"
     });
   }
@@ -88,6 +91,7 @@ export default class BlogController {
       }
 
       return res.render('admin_panel/blogs/edit', {
+        layout: 'layouts/admin',
         titlePage: blog.title,
         blog
       });
