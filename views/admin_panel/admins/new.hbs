@@ -1,5 +1,31 @@
-{{#> admin title = titlePage }}
+<h1> Nuevo Adminidtrador </h1>
 
-  <div> Estamos en la pagina new de administradores </div>
+<form action="/admin_panel/admins" method="POST">
 
-{{/admin}}
+  <div class="field">
+    <label for="name"> Nombre </label>
+    <input type="text" id="name" name="name" placeholder="Ingresar nombre">
+  </div>
+
+  <div class="field">
+    <label for="email"> Email </label>
+    <input type="text" id="email" name="email" placeholder="Ingresar email">
+  </div>
+
+  <div class="field-double">
+    <div class="item">
+      <label for="password"> Password </label>
+      <input type="text" id="password" name="password" placeholder="Ingresar password">
+    </div>
+
+    <div class="item">
+      <label for="password_repeat"> Confirm password </label>
+      <input type="text" id="password_repeat" name="password_repeat" placeholder="Confirmar password">
+    </div>
+  </div>
+
+  <button type="submit"> Agregar </button>
+
+</form>
+<div> Estamos en la pagina new de administradores </div>
+

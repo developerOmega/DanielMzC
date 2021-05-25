@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport"  content="width=device-width, initial-scale=1.0">
   <meta http-equiv="refresh" content="0">
-  <title>{{ title }}</title>
+  <title>{{ titlePage }}</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -13,14 +13,22 @@
     <h2> Daniel Mendoza Admin</h2>
 
     <nav class="nav">
-      <a href="/blogs"> Blog </a>
-      <a href="/projects"> Portafolio </a>
-      <a href="/sliders"> sliders </a>
-      <a href="/admins"> Admins </a>
+      <a class="link" href="/blogs"> Blog </a>
+      <a class="link" href="/projects"> Portafolio </a>
+      <a class="link" href="/sliders"> sliders </a>
+      <a class="link" href="/admins"> Admins </a>
     </nav>
+    
+    <form method="POST" action="/admin_panel/logout" enctype="application/x-www-form-urlencoded">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="link top" type="submit" > Salir </button>
+    </form>
   </header>
 
-  {{{ body }}}
+  <div class="container">
+    {{{ body }}}
+  </div>
+
 
 </body>
 </html>

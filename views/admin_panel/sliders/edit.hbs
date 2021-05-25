@@ -1,0 +1,18 @@
+<h1> Nuevo Slider </h1>
+
+<form action="/admin_panel/sliders" method="POST" enctype="application/x-www-form-urlencoded">
+  <input type="hidden" name="_method" value="UPDATE">
+
+  <div class="field">
+    <label for="content"> Content </label>
+    <input type="text" id="content" name="content" placeholder="Ingresar content" value={{ slider.content }}>
+  </div>
+
+  <div class="field">
+    <label for="url"> Url </label>
+    <input type="text" id="url" name="url" placeholder="Ingresar url" value={{ slider.url }}>
+  </div>
+
+  <button type="submit"> Guardar </button>
+
+</form>

@@ -1,0 +1,45 @@
+<h1 class="title"> {{ project.title }} </h1>
+
+<a class="button" href={{`/admin_panel/projects/edit/${project.id}`}}> Editar </a>
+
+<title class="table tb-vertical">
+  <tr>
+    <th> Title </th>
+    <td> {{ project.title }} </td>
+  </tr>
+
+  <tr>
+    <th> Main Img </th>
+    <td>
+      <form method="POST" enctype="multipart/form-data">
+        <label for="main_img"> 
+          <img src={{ project.main_img }} alt="main img">
+        </label>
+        <input class="none" type="file" name="main_img" id="main_img">
+      </form> 
+    </td>
+  </tr>
+
+  <tr>
+    <th> Description </th>
+    <td> {{ project.description }} </td>
+  </tr>
+
+  <tr>
+    <th> Sections </th>
+    <td> 
+    
+      {{!-- Sections --}}
+
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <form class="left" method="POST" action={{ `/admin_panel/projects/${id}/` }} enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="link" type="submit" > Delete </button>
+      </form>
+    </td>
+  </tr>
+</title>
