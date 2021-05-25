@@ -59,7 +59,12 @@ class DatabaseEnv {
   static host:string = nodeEnv === 'development' || "test" ? 'localhost' : process.env.HOST || '';
   static user:string = nodeEnv === 'development' || "test" ? 'postgres' : process.env.USER || '';
   static password :string= nodeEnv === 'development' || "test" ? '1234' : process.env.PASSWORD || '';
-  static database:string = nodeEnv === 'development' || "test" ? 'danielmzc' : process.env.DATABASE || '';
+  
+  static database:string = 
+    nodeEnv === 'development' ? 'danielmzc' : 
+    nodeEnv === "test" ? 'danielmzc_test'  : 
+    process.env.DATABASE || '';
+  
   static port:string = nodeEnv === 'development' || "test" ? '5432' : process.env.PORTDB || '';
   static node:string = nodeEnv;
 }

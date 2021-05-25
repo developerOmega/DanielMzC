@@ -1,5 +1,6 @@
 import express = require('express');
 import path = require('path')
+import addInitializer from '../Initializers';
 
 export default class Server {
   public app:express.Application;
@@ -18,10 +19,12 @@ export default class Server {
     const publicPath = path.resolve(__dirname, '../../public');
     this.app.use(express.static(publicPath));
   }
+  
 
-  public start( callback: Function ){
+  public async start( callback: Function ){
     this.app.listen(this.port, callback(this.port));
     this.publicPath();
+    await addInitializer();
   }
 
 }

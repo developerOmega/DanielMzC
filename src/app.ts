@@ -37,10 +37,10 @@ server.app.use(session({
   secret: SessionConf.secret,
   resave: true,
   saveUninitialized: true,
-  unset: 'destroy',
+  // unset: 'destroy',
   cookie: {
     maxAge: SessionConf.maxAge,
-    secure: true
+    // secure: true
   }
 }));
 
