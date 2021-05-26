@@ -1,6 +1,10 @@
-<h1> Nuevo Slider </h1>
+<h1 class="title"> Nuevo Slider </h1>
 
-<form action="/admin_panel/admins" method="POST">
+<div class="button-content">
+  <a class="btn" href="/admin_panel/sliders"> Lista </a>
+</div>
+
+<form class="main form" action="/admin_panel/sliders" method="POST">
 
   <div class="field">
     <label for="content"> Content </label>
@@ -12,6 +16,6 @@
     <input type="text" id="url" name="url" placeholder="Ingresar url">
   </div>
 
-  <button type="submit"> Agregar </button>
+  <button class="btn b-red w-100" type="submit"> Agregar </button>
 
 </form>
