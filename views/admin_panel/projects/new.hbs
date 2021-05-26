@@ -1,6 +1,10 @@
-<h1> Nuevo Proyecto </h1>
+<h1 class="title"> Nuevo Proyecto </h1>
 
-<form action="/admin_panel/admins" method="POST">
+<div class="button-content">
+  <a class="btn" href="/admin_panel/projects"> Lista </a>
+</div>
+
+<form class="main form" action="/admin_panel/projects" method="POST">
 
   <div class="field">
     <label for="titie"> Titulo </label>
@@ -9,9 +13,9 @@
 
   <div class="field">
     <label for="titie"> Descripcion </label>
-    <input type="text" id="descripcion" name="descripcion" placeholder="Ingresar descripcion">
+    <input type="text" id="description" name="description" placeholder="Ingresar description">
   </div>
 
-  <button type="submit"> Agregar </button>
+  <button class="btn b-red w-100" type="submit"> Agregar </button>
 
 </form>

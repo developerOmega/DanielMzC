@@ -1,8 +1,10 @@
 <h1 class="title"> Projects </h1>
 
-<a class="button" href="/admin_panel/projects/new"> Nuevo </a>
+<div class="button-content">
+  <a class="btn" href="/admin_panel/projects/new"> Nuevo </a>
+</div>
 
-<title class="table tb-horizontal">
+<table class="main table border-horizontal tb-horizontal">
   <thead>
     <tr>
       <th> ID </th>
@@ -18,17 +20,18 @@
     <tr>
       {{#projects }}
         <td> {{ id }} </td>
-        <td> {{ title }} </td>
+        <td> <a href="/admin_panel/projects/show/{{id}}"> {{title}} </a> </td>
         <td> {{ description }} </td>
-        <td> <img src={{ main_img }} alt="main img00"> </td>
-        <td> <a href="/admin_panel/projects/edit/{{id}}"> Editar </a> </td>
+        <td> <img src={{ main_img }} alt="main img"> </td>
+        <td> </td>
+        <td> <a class="red" href="/admin_panel/projects/edit/{{id}}"> Editar </a> </td>
         <td>
           <form method="POST" action="/admin_panel/projects/{{id}}" enctype="application/x-www-form-urlencoded">
             <input type="hidden" name="_method" value="DELETE">
-            <button class="link" type="submit" > Delete </button>
+            <button class="btn b-red" type="submit" > Delete </button>
           </form>
         </td>
       {{/projects}}
     </tr>
   </tbody>
-</title>
+</table>

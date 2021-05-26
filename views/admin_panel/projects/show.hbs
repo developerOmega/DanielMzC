@@ -1,28 +1,33 @@
 <h1 class="title"> {{ project.title }} </h1>
 
-<a class="button" href="/admin_panel/projects/edit/{{project.id}}"> Editar </a>
+<div class="button-content">
+  <a class="btn" href="/admin_panel/projects/edit/{{project.id}}"> Editar </a>
+</div>
 
-<title class="table tb-vertical">
+
+<table class="main table border-vertical tb-vertical">
   <tr>
-    <th> Title </th>
-    <td> {{ project.title }} </td>
+    <th class="init"> Title </th>
+    <td> <div class="td-cont"> {{ project.title }} </div> </td>
   </tr>
 
   <tr>
     <th> Main Img </th>
     <td>
-      <form method="POST" enctype="multipart/form-data">
-        <label for="main_img"> 
-          <img src={{ project.main_img }} alt="main img">
-        </label>
-        <input class="none" type="file" name="main_img" id="main_img">
-      </form> 
+      <div class="td-cont">
+        <form method="POST" enctype="multipart/form-data">
+          <label for="main_img"> 
+            <img src={{ project.main_img }} alt="main img">
+          </label>
+          <input class="none" type="file" name="main_img" id="main_img">
+        </form> 
+      </div>
     </td>
   </tr>
 
   <tr>
     <th> Description </th>
-    <td> {{ project.description }} </td>
+    <td> <div class="td-cont">{{ project.description }}</div>  </td>
   </tr>
 
   <tr>
@@ -35,11 +40,12 @@
   </tr>
 
   <tr>
+    <th class="end"></th>
     <td>
-      <form class="left" method="POST" action="/admin_panel/projects/{{id}}" enctype="application/x-www-form-urlencoded">
+      <form method="POST" action="/admin_panel/projects/{{id}}" enctype="application/x-www-form-urlencoded">
         <input type="hidden" name="_method" value="DELETE">
-        <button class="link" type="submit" > Delete </button>
+        <button class="btn b-red right" type="submit" > Delete </button>
       </form>
     </td>
   </tr>
-</title>
+</table>

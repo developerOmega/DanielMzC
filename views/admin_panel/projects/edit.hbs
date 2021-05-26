@@ -1,18 +1,22 @@
-<h1> Nuevo Proyecto </h1>
+<h1 class="title"> Nuevo Proyecto </h1>
 
-<form action="/admin_panel/projects" method="POST" enctype="application/x-www-form-urlencoded">
-  <input type="hidden" name="_method" value="UPDATE">
+<div class="button-content">
+  <a class="btn" href="/admin_panel/projects/show/{{ project.id }}"> Ver Proyecto </a>
+</div>
+
+<form class="main form" action="/admin_panel/projects" method="POST" enctype="application/x-www-form-urlencoded">
+  <input type="hidden" name="_method" value="PUT">
 
   <div class="field">
     <label for="titie"> Titulo </label>
-    <input type="text" id="title" name="title" placeholder="Ingresar title">
+    <input type="text" id="title" name="title" placeholder="Ingresar title" value="{{ project.title }}">
   </div>
 
   <div class="field">
     <label for="titie"> Descripcion </label>
-    <input type="text" id="descripcion" name="descripcion" placeholder="Ingresar descripcion">
+    <input type="text" id="descripcion" name="descripcion" placeholder="Ingresar descripcion" value="{{ project.description }}">
   </div>
 
-  <button type="submit"> Agregar </button>
+  <button class="btn b-red w-100" type="submit"> Agregar </button>
 
 </form>
