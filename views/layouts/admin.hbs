@@ -11,20 +11,22 @@
 </head>
 <body>
   <div class="container">
-    <header class="header"> 
-      <div class="logo">Daniel Mendoza</div>
+    <header class="header">
+      <div class="header-cont ">
+        <div class="logo">Daniel Mendoza</div>
 
-      <nav class="nav">
-        <a class="link c-white" href="/admin_panel/blogs"> Blog </a>
-        <a class="link c-white" href="/admin_panel/projects"> Portafolio </a>
-        <a class="link c-white" href="/admin_panel/sliders"> sliders </a>
-        <a class="link c-white" href="/admin_panel/admins"> Admins </a>
-      </nav>
-      
-      <form method="POST" action="/admin_panel/logout" enctype="application/x-www-form-urlencoded">
-        <input type="hidden" name="_method" value="DELETE">
-        <button class="link c-white top" type="submit" > Salir </button>
-      </form>
+        <nav class="nav">
+          <a class="link c-white" href="/admin_panel/blogs"> Blog </a>
+          <a class="link c-white" href="/admin_panel/projects"> Portafolio </a>
+          <a class="link c-white" href="/admin_panel/sliders"> sliders </a>
+          <a class="link c-white" href="/admin_panel/admins"> Admins </a>
+        </nav>
+        
+        <form method="POST" action="/admin_panel/logout" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="link c-white top" type="submit" > Salir </button>
+        </form>
+      </div>
     </header>
     
     <div class="content">

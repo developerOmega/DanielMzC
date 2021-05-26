@@ -39,15 +39,19 @@ h1.title {
   grid-template-columns: 12rem 1fr; }
 
 header.header {
-  padding: 1.4rem;
-  background: #1E1E1E;
-  height: 100vh;
-  display: grid;
-  align-content: space-between; }
-  header.header nav {
+  position: relative; }
+  header.header .header-cont {
+    background: #1E1E1E;
+    padding: 1.4rem;
+    max-width: 12rem;
+    height: 100vh;
+    position: fixed;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 2rem; }
+    align-content: space-between; }
+    header.header .header-cont nav {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 2rem; }
 
 .content {
   padding: 2rem;
