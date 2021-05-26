@@ -1,7 +1,11 @@
-<h1> Editar Adminidtrador </h1>
+<h1 class="title"> Editar Adminidtrador </h1>
 
-<form action="/admin_panel/admins/{{admin.id}}" method="POST" enctype="application/x-www-form-urlencoded">
-  <input type="hidden" name="_method" value="UPDATE">
+<div class="button-content">
+  <a class="btn" href="/admin_panel/admins/show/{{ admin.id }}"> Ver Admin </a>
+</div>
+
+<form class="main form" action="/admin_panel/admins/{{admin.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+  <input type="hidden" name="_method" value="PUT">
 
   <div class="field">
     <label for="name"> Nombre </label>
@@ -13,6 +17,11 @@
     <input type="text" id="email" name="email" placeholder="Ingresar email" value={{ admin.email }}>
   </div>
 
-  <button type="submit"> Guardar </button>
+  <div class="field">
+    <label for="is_su_admin"> is Admin: </label>
+    <input type="checkbox" id="is_su_admin" name="is_su_admin" value="1">
+  </div>
+
+  <button type="submit" class="btn b-red w-100"> Guardar </button>
 
 </form>

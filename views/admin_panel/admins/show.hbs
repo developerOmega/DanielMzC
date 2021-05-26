@@ -1,34 +1,34 @@
 <h1 class="title"> {{ admin.name }} </h1>
 
-<a class="button" href={{`/admin_panel/admins/edit/${admin.id}`}}> Editar </a>
 
-<title class="table tb-vertical">
+<div class="button-content">
+  <a class="btn" href="/admin_panel/admins/edit/{{admin.id}}"> Editar </a>
+
+</div>
+
+<table class="main table border-vertical tb-vertical">
   <tr>
-    <th> Name </th>
-    <td> {{ admin.name }} </td>
+    <th class="init"> Name </th>
+    <td> <div class="td-cont"> {{ admin.name }} </div> </td>
   </tr>
 
   <tr>
     <th> Email </th>
-    <td> {{ admin.email }} </td>
-  </tr>
-
-  <tr>
-    <th> Email </th>
-    <td> {{ admin.email }} </td>
+    <td> <div class="td-cont"> {{ admin.email }} </div> </td>
   </tr>
 
   <tr>
     <th> Super Admin </th>
-    <td> {{ admin.is_su_admin ? "Si" : "No" }} </td>
+    <td> <div class="td-cont"> {{ admin.is_su_admin }} </div> </td>
   </tr>
   
   <tr>
+    <th class="end"></th>
     <td>
-      <form class="left" method="POST" action={{ `/admin_panel/admins/${id}/` }} enctype="application/x-www-form-urlencoded">
+      <form method="POST" action="/admin_panel/admins/{{admin.id}}" enctype="application/x-www-form-urlencoded">
         <input type="hidden" name="_method" value="DELETE">
-        <button class="link" type="submit" > Delete </button>
+        <button class="btn b-red right" type="submit" > Delete </button>
       </form>
     </td>
   </tr>
-</title>
+</table>

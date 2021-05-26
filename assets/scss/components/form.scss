@@ -1,0 +1,31 @@
+.form {
+  width: 100%;
+
+  .field, .field-double {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    background: $gray-card;
+    border-radius: 5px;
+  }
+
+  .field, .field-double .item {
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+    }
+    input[type="text"], input[type="password"], input[type="email"] {
+      padding: .6rem;
+      border-radius: 5px;
+      font-size: 14px;
+      width: 100%;
+      border: none;
+    }
+  }
+
+  .field-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}

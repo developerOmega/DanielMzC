@@ -1,31 +1,39 @@
-<h1> Nuevo Adminidtrador </h1>
+<h1 class="title"> Nuevo Adminidtrador </h1>
 
-<form action="/admin_panel/admins" method="POST">
+<div class="button-content">
+  <a class="btn" href="/admin_panel/admins"> Lista </a>
+</div>
+
+<form class="main form" action="/admin_panel/admins" method="POST">
 
   <div class="field">
-    <label for="name"> Nombre </label>
+    <label for="name"> nombre: </label>
     <input type="text" id="name" name="name" placeholder="Ingresar nombre">
   </div>
 
   <div class="field">
-    <label for="email"> Email </label>
-    <input type="text" id="email" name="email" placeholder="Ingresar email">
+    <label for="email"> email: </label>
+    <input type="email" id="email" name="email" placeholder="Ingresar email">
+  </div>
+
+  <div class="field">
+
+    <label for="is_su_admin"> is Admin: </label>
+    <input type="checkbox" id="is_su_admin" name="is_su_admin" value="1">
   </div>
 
   <div class="field-double">
     <div class="item">
-      <label for="password"> Password </label>
-      <input type="text" id="password" name="password" placeholder="Ingresar password">
+      <label for="password"> password: </label>
+      <input type="password" id="password" name="password" placeholder="Ingresar password">
     </div>
 
     <div class="item">
-      <label for="password_repeat"> Confirm password </label>
-      <input type="text" id="password_repeat" name="password_repeat" placeholder="Confirmar password">
+      <label for="password_repeat"> confirm password: </label>
+      <input type="password" id="password_repeat" name="password_repeat" placeholder="Confirmar password">
     </div>
   </div>
 
-  <button type="submit"> Agregar </button>
+  <button type="submit" class="btn b-red w-100"> Agregar </button>
 
 </form>
-<div> Estamos en la pagina new de administradores </div>
-

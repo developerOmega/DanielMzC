@@ -1,0 +1,25 @@
+.btn {
+  text-decoration: none;
+  border: none;
+  background: $gray;
+  padding: 1rem;
+  text-align: center;
+  font-size: 14px;
+  color: $white;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background: rgba($gray, .7)
+  }
+
+  &.b-red {
+    background: $red;
+    &:hover {
+      background: rgba($red, .7)
+    }
+  }
+
+  &.w-100{
+    width: 100%;  
+  }
+}

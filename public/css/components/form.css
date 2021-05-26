@@ -1,0 +1,12 @@
+.form {
+  width: 100%; }
+  .form .field {
+    padding: 1rem;
+    background: orange; }
+    .form .field label {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px; }
+    .form .field input {
+      padding: .5rem;
+      width: 100%; }
