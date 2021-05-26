@@ -105,6 +105,9 @@ header.header {
       padding: 1rem;
       background: #EEE;
       border-radius: 5px; }
+  .table img {
+    display: block;
+    max-width: 20rem; }
 
 .btn {
   text-decoration: none;
@@ -136,7 +139,7 @@ header.header {
     display: flex;
     flex-direction: column;
     font-size: 14px; }
-  .form .field input[type="text"], .form .field input[type="password"], .form .field input[type="email"], .form .field-double .item input[type="text"], .form .field-double .item input[type="password"], .form .field-double .item input[type="email"] {
+  .form .field input[type="text"], .form .field input[type="password"], .form .field input[type="email"], .form .field textarea, .form .field-double .item input[type="text"], .form .field-double .item input[type="password"], .form .field-double .item input[type="email"], .form .field-double .item textarea {
     padding: .6rem;
     border-radius: 5px;
     font-size: 14px;

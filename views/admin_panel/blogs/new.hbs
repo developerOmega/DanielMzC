@@ -1,6 +1,10 @@
-<h1> Nuevo Blog </h1>
+<h1 class="title"> Nuevo Blog </h1>
 
-<form action="/admin_panel/blogs" method="POST">
+<div class="button-content">
+  <a class="btn" href="/admin_panel/blogs"> Lista </a>
+</div>
+
+<form class="main form" action="/admin_panel/blogs" method="POST">
 
   <div class="field">
     <label for="title"> Titulo </label>
@@ -17,7 +21,7 @@
     <textarea name="content" id="content" placeholder="Ingresar contenido"></textarea>
   </div>
 
-  <button type="submit"> Agregar </button>
+  <button class="btn b-red w-100" type="submit"> Agregar </button>
 
 </form>
 

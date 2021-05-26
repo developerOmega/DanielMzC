@@ -53,7 +53,6 @@ export default class SliderController {
 
     try {
       const params: SliderData = {
-        img: body.img,
         content: body.content,
         url: body.url,
         admin_id: req.session.admin.id

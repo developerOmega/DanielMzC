@@ -1,24 +1,28 @@
-<h1> Nuevo Blog </h1>
+<h1 class="title"> Nuevo Blog </h1>
 
-<form action="/admin_panel/blogs" method="POST" enctype="application/x-www-form-urlencoded">
+<div class="button-content">
+  <a class="btn" href="/admin_panel/blogs/show/{{ blog.id }}"> Ver Post </a>
+</div>
+
+<form class="main form" action="/admin_panel/blogs" method="POST" enctype="application/x-www-form-urlencoded">
   <input type="hidden" name="_method" value="UPDATE">
 
   <div class="field" >
     <label for="title"> Titulo </label>
-    <input type="text" id="title" name="title" placeholder="Ingresar titulo" value={{ admin.title }}>
+    <input type="text" id="title" name="title" placeholder="Ingresar titulo" value="{{ blog.title }}">
   </div>
 
   <div class="field">
     <label for="description"> Descripcion </label>
-    <input type="text" id="description" name="description" placeholder="Ingresar descipcion" value={{ admin.description }}>
+    <input type="text" id="description" name="description" placeholder="Ingresar descipcion" value="{{ blog.description }}">
   </div>
 
   <div class="field">
     <label for="content"> Content </label>
-    <textarea name="content" id="content" placeholder="Ingresar contenido"> value={{ admin.content }} </textarea>
+    <textarea name="content" id="content" placeholder="Ingresar contenido"> {{ blog.content }} </textarea>
   </div>
 
-  <button type="submit"> Guardar </button>
+  <button class="btn b-red w-100" type="submit"> Guardar </button>
 
 </form>
 

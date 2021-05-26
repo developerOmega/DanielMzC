@@ -55,7 +55,6 @@ export default class ProjectController {
       const params: ProjectData = {
         title: body.title,
         description: body.description,
-        main_img: body.main_img,
         admin_id: req.session.admin.id
       }
 

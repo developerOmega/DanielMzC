@@ -56,8 +56,7 @@ export default class BlogController {
         title: body.title,
         description: body.description,
         content: body.content,
-        main_img: body.main_img,
-        admin_id: body.admin_id
+        admin_id: req.session.admin.id
       }
 
       const blog = await Blog.create(params);
