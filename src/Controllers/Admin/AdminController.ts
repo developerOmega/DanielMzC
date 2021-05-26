@@ -53,14 +53,18 @@ export default class AdminController {
   }
 
   public async create(req: Request, res: Response) {
-    let body = <AdminData> req.body;
+    let body = req.body;
+
+    if(body.password_repeat != body.password) {
+      return res.redirect('back');
+    }
 
     try {
       const params: AdminData = {
         name: body.name,
         email: body.email,
         password: bcrypt.hashSync(body.password, 10),
-        is_su_admin: body.is_su_admin
+        is_su_admin: !body.is_su_admin ? false : body.is_su_admin   
       }
 
       let admin = await Admin.create(params);
@@ -101,7 +105,8 @@ export default class AdminController {
     let id:number = parseInt(req.params.id);
     let body = req.body;
 
-    body = delete body.password;
+    delete body.password;
+    body.is_su_admin = !body.is_su_admin ? false : body.is_su_admin;  
   
     try {
       let admin = await Admin.byId(id);

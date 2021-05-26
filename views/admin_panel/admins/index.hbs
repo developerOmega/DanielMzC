@@ -22,7 +22,7 @@
           <td class="init"> {{ id }} </td>
           <td> <a href="/admin_panel/admins/show/{{id}}"> {{ name }} </a> </td>
           <td> {{ email }} </td>
-          <td> {{ is_su_admin}} </td>
+          <td> {{ super_admin is_su_admin}} </td>
           <td> <a class="link c-black" href="/admin_panel/admins/edit/{{ id }}"> Edit </a> </td>
           <td class="end">
             <form method="POST" action="/admin_panel/admins/{{ id }}" enctype="application/x-www-form-urlencoded">

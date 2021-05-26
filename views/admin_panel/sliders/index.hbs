@@ -17,20 +17,20 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
       {{#sliders }}
-        <td class="init"> {{ id }} </td>
-        <td> <img src={{ img }} alt="img"> </td>
-        <td> {{ content }} </td>
-        <td> {{ url }} </td>
-        <td> <a class="link c-black" href="/admin_panel/sliders/edit/{{id}}"}}> Edit </a> </td>
-        <td class="end">
-          <form method="POST" action="/admin_panel/sliders/{{id}}" enctype="application/x-www-form-urlencoded">
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn b-red" type="submit" > Delete </button>
-          </form>
-        </td>
+        <tr>
+          <td class="init"> {{ id }} </td>
+          <td> <a href="/admin_panel/sliders/show/{{id}}"> <img src={{ img }} alt="img"> </a> </td>
+          <td> {{ content }} </td>
+          <td> {{ is_url url }} </td>
+          <td> <a class="link c-black" href="/admin_panel/sliders/edit/{{id}}"}}> Edit </a> </td>
+          <td class="end">
+            <form method="POST" action="/admin_panel/sliders/{{id}}" enctype="application/x-www-form-urlencoded">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn b-red" type="submit" > Delete </button>
+            </form>
+          </td>
+        </tr>
       {{/sliders}}
-    </tr>
   </tbody>
 </table>

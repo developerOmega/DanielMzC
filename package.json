@@ -9,7 +9,7 @@
     "build": "tsc --watch",
     "start": "node dist/index.js",
     "js": "webpack --watch",
-    "scss": "node-sass --watch assets/scss/ -o public/css/",
+    "scss": "node-sass --watch assets/scss -o public/css",
     "assets": "npm run js & npm run scss"
   },
   "author": "Daniel Mendoza",

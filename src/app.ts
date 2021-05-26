@@ -4,6 +4,7 @@ import fileUpload from 'express-fileupload';
 
 import bodyParser = require('body-parser');
 import hbs = require('hbs');
+import setHelpersHBS from './hbs/helpers';
 import path = require('path')
 import session = require('express-session');
 import methodOverride = require('method-override');
@@ -20,6 +21,8 @@ server.app.use( fileUpload( {useTempFiles: false} ) )
 const pathPartial = path.resolve(__dirname, '../views/partials')
 hbs.registerPartials(pathPartial);
 
+// Agregar helpers a hbs
+setHelpersHBS();
 server.app.set('view engine', 'hbs');
 
 // override with the X-HTTP-Method-Override header in the request

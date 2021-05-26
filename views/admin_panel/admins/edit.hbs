@@ -9,17 +9,17 @@
 
   <div class="field">
     <label for="name"> Nombre </label>
-    <input type="text" id="name" name="name" placeholder="Ingresar nombre" value={{ admin.name }}>
+    <input type="text" id="name" name="name" placeholder="Ingresar nombre" value="{{ admin.name }}">
   </div>
 
   <div class="field">
     <label for="name"> Email </label>
-    <input type="text" id="email" name="email" placeholder="Ingresar email" value={{ admin.email }}>
+    <input type="email" id="email" name="email" placeholder="Ingresar email" value="{{ admin.email }}">
   </div>
 
   <div class="field">
     <label for="is_su_admin"> is Admin: </label>
-    <input type="checkbox" id="is_su_admin" name="is_su_admin" value="1">
+    <input type="checkbox" id="is_su_admin" name="is_su_admin"  value="1" {{ checked admin.is_su_admin true }}>
   </div>
 
   <button type="submit" class="btn b-red w-100"> Guardar </button>

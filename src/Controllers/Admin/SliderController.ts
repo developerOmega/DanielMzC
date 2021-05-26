@@ -108,7 +108,7 @@ export default class SliderController {
 
       await slider.update(body);
 
-      return res.redirect(`/admin_panel/blogs/show/${slider.id}`);
+      return res.redirect(`/admin_panel/sliders/show/${slider.id}`);
 
     } catch (error) {
       return res.redirect('back')
@@ -127,7 +127,7 @@ export default class SliderController {
 
       await slider.delete();
 
-      return res.redirect(`/admin_panel/blogs`);
+      return res.redirect(`/admin_panel/sliders`);
 
     } catch (error) {
       return res.redirect('back');
