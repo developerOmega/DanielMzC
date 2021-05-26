@@ -16,11 +16,10 @@ export default class LoginController {
     try {
       const admin = await Admin.byEmail(body.email);
       
-      
       if(!admin) {
         return res.redirect('back');
       }
-
+      
       if(!bcrypt.compareSync(body.password, admin.password)){
         return res.redirect('back');
       }

@@ -58,8 +58,6 @@ describe("Test auth jwt", () => {
         email: admin.email,
         password: "qwerty123"
       });
-    
-    console.log(response.body);
 
     expect(response.statusCode).toEqual(200);
   });

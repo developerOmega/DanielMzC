@@ -1,4 +1,56 @@
-body{
-  background: green;
+@import './_var';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.logo {
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: $white;
+}
+
+h1.title {
+  font-weight: 500;
+}
+
+.c-white{
+  color: $white;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 15px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  &:hover {
+    color: $red;
+    text-decoration: underline;
+  }
+}
+
+.container{
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 12rem 1fr;
+}
+
+header.header {
+  padding: 1.4rem;
+  background: $black;
+  height: 100vh;
+
+  display: grid;
+  align-content: space-between;
+  nav {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+
+  }
 }
 

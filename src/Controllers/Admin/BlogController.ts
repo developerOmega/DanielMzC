@@ -60,12 +60,7 @@ export default class BlogController {
         admin_id: body.admin_id
       }
 
-      console.log(params);
-
       const blog = await Blog.create(params);
-
-      console.log(blog);
-
 
       if(!blog.id){
         res.redirect('back');

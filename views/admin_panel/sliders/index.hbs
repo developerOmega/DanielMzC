@@ -1,6 +1,6 @@
 <h1 class="title"> Admins </h1>
 
-<a class="button" href={{`/admin_panel/admins/new`}}> Nuevo </a>
+<a class="button" href="/admin_panel/admins/new"> Nuevo </a>
 
 
 <title class="table tb-horizontal">
@@ -20,10 +20,10 @@
         <td> {{ id }} </td>
         <td> <img src={{ img }} alt="img"> </td>
         <td> {{ content }} </td>
-        <td> {{ url == "" ? "No hay url" : url }} </td>
-        <td> <a href={{`/admin_panel/sliders/edit/${id}`}}> Edit </a> </td>
+        <td> {{ url }} </td>
+        <td> <a href="/admin_panel/sliders/edit/{{id}}"}}> Edit </a> </td>
         <td>
-          <form method="POST" action={{ `/admin_panel/sliders/${id}` }} enctype="application/x-www-form-urlencoded">
+          <form method="POST" action="/admin_panel/sliders/{{id}}" enctype="application/x-www-form-urlencoded">
             <input type="hidden" name="_method" value="DELETE">
             <button class="link" type="submit" > Delete </button>
           </form>

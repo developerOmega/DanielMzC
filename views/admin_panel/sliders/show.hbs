@@ -1,6 +1,6 @@
 <h1 class="title"> Slider No.{{ slider.id }} </h1>
 
-<a class="button" href={{`/admin_panel/sliders/edit/${slider.id}`}}> Editar </a>
+<a class="button" href="/admin_panel/sliders/edit/{{slider.id}}"> Editar </a>
 
 <title class="table tb-vertical">
   <tr>
@@ -27,7 +27,7 @@
 
   <tr>
     <td>
-      <form class="left" method="POST" action={{ `/admin_panel/sliders/${id}/` }} enctype="application/x-www-form-urlencoded">
+      <form class="left" method="POST" action="/admin_panel/sliders/{{id}}" enctype="application/x-www-form-urlencoded">
         <input type="hidden" name="_method" value="DELETE">
         <button class="link" type="submit" > Delete </button>
       </form>
