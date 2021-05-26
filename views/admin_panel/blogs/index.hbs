@@ -8,25 +8,25 @@
 <table class="main table  border-horizontal tb-horizontal">
   <thead>
     <tr>
-      <th> ID </th>
+      <th class="init"> ID </th>
       <th> Title </th>
       <th> Description </th>
       <th> Main img </th>
       <th> Admin </th>
       <th> Editar </th>
-      <th> Eliminar </th>
+      <th class="end"> Eliminar </th>
     </tr>
   </thead>
   <tbody>
       {{#blogs }}
         <tr>
-          <td> {{ id }} </td>
+          <td class="init"> {{ id }} </td>
           <td> <a href="/admin_panel/blogs/show/{{id}}"> {{ title }} </a></td>
           <td> {{ description }} </td>
           <td> <img src={{ main_img }} alt=""> </td>
           <td> </td>
           <td> <a class="link c-black" href="/admin_panel/blogs/edit/{{id}}"> Editar </a> </td>
-          <td>
+          <td class="end">
             <form method="POST" action="/admin_panel/blogs/{{id}}" enctype="application/x-www-form-urlencoded">
               <input type="hidden" name="_method" value="DELETE">
               <button class="btn b-red" type="submit" > Eliminar </button>

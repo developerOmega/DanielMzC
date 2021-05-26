@@ -72,7 +72,10 @@ header.header {
   border-collapse: collapse; }
 
 .table {
-  text-align: center; }
+  text-align: center;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap; }
   .table.tb-horizontal tr th {
     border: none;
     background: #1E1E1E;
@@ -82,14 +85,17 @@ header.header {
   .table.tb-horizontal tr td {
     padding: .5rem;
     background: #EEE; }
-  .table.tb-horizontal tr th.init, .table.tb-horizontal tr td.init {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px; }
-  .table.tb-horizontal tr th.end, .table.tb-horizontal tr td.end {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px; }
+  .table.tb-horizontal tr th, .table.tb-horizontal tr td {
+    width: 100%; }
+    .table.tb-horizontal tr th.init, .table.tb-horizontal tr td.init {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px; }
+    .table.tb-horizontal tr th.end, .table.tb-horizontal tr td.end {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px; }
   .table.tb-vertical tr th {
     width: 12rem;
+    padding: 1rem;
     background: #1E1E1E;
     color: #FFFFFF;
     font-weight: 400; }
@@ -100,6 +106,7 @@ header.header {
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px; }
   .table.tb-vertical tr td {
+    width: 100%;
     padding: 0 2rem 2rem 2rem; }
     .table.tb-vertical tr td .td-cont {
       padding: 1rem;
