@@ -14,11 +14,16 @@
     <th> Main Img </th>
     <td>
       <div class="td-cont">
-        <form method="POST" enctype="multipart/form-data">
-          <label for="main_img"> 
+        <form class="form-file" method="POST" enctype="multipart/form-data">
+          <label class="label-img" for="main_img"> 
             <img src={{ blog.main_img }} alt="main img">
           </label>
+          
           <input class="none" type="file" name="main_img" id="main_img">
+          
+          <div class="buttons">
+            <button id="drop-file" type="button" class="btn b-red"> Eliminar </button>
+          </div>
         </form> 
       </div>
     </td>

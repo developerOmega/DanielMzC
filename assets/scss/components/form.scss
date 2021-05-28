@@ -29,3 +29,25 @@
     gap: 2rem;
   }
 }
+
+.form-file {
+  max-width: 700px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  .label-img{
+    background: orange;
+    img {
+      object-fit: cover;
+      max-width: 100%;
+    }
+  } 
+  .buttons {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: flex-end;
+    button {
+      margin-left: 2rem;
+    }
+  }
+}
