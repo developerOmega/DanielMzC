@@ -11,8 +11,15 @@ export default class FileOpen extends Open {
 
   label;
 
-  constructor( pathname ) {
+  table; 
+  column;
+
+  constructor( table, column, pathname ) {
     super(pathname);
+
+    // nombe de tabla y colunma (nombre del parametro de la imagen), para crear rutas instancias dinamicas con blogs, sectios, projects y sliders
+    this.table = table;
+    this.column = column;
 
     this.label = document.querySelector('#label-img');
 
@@ -58,7 +65,7 @@ export default class FileOpen extends Open {
     // Agregar evento para para actualizar imagen en el boton "Guardar"
     this.buttonsCont.children[0].addEventListener('click', async (e) => {
       const form = this.buttonsCont.parentNode;
-      await this.uploadFile(form.main_img.files[0]);
+      await this.uploadFile( eval('form.' + this.column + '.files[0]') );
     });
   }
 
@@ -98,11 +105,11 @@ export default class FileOpen extends Open {
 
     try {
       
-      const req = `/api/v1/blogs/${ this.file.id }/img`;
+      const req = `/api/v1/${this.table}/${ this.file.id }/img`;
       
       // Crear data
       const data = new FormData();
-      data.append('main_img', file);
+      data.append(this.column, file);
       
       // Si la propiedad imgPath es igual a la imagen default, entonces crear nueva imagen; en caso contrario actualizar la imagen existenete
       const result = this.imgPath == `${this.file.url}/images/main_image.png` ? 
@@ -110,7 +117,7 @@ export default class FileOpen extends Open {
         await this.file.updateReq(req, data);
   
       // imgPath es igual a la nueva imagen
-      this.imgPath = result.data.main_img;
+      this.imgPath = eval('result.data.' + this.column);
 
       this.cancelFile();
       this.cancelButton();
@@ -128,7 +135,7 @@ export default class FileOpen extends Open {
     // activar loading tag
     this.setLoading();
 
-    const req = this.imgPath = `/api/v1/blogs/${ this.file.id }/img`;
+    const req = this.imgPath = `/api/v1/${this.table}/${ this.file.id }/img`;
     
     // Llamar metodo para eliminar imagen
     await this.file.deleteReq(req);
