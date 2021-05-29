@@ -19,11 +19,17 @@
     <th> Img </th>
     <td>
       <div class="td-cont">
-        <form method="POST" enctype="multipart/form-data">
-          <label for="img"> 
-            <img src={{ slider.img }} alt="img">
+        <form class="form-file" id="form-file" method="POST" enctype="multipart/form-data">
+
+          <label id="label-img" class="label-img" for="img">
+            <img id="img-tag" src={{ slider.img }} alt="img">
           </label>
+          
           <input class="none" type="file" name="img" id="img">
+          
+          <div class="buttons" id="buttons">
+            <button id="drop-file" type="button" class="btn b-red"> Eliminar </button>
+          </div>
         </form> 
       </div>
     </td>
