@@ -4,29 +4,27 @@ import RequestFile from './requests/requestFile';
 
 export default class SectionScript extends Open {
   
-  section;
-
   screen;
   btnNewSection;
   btnCancelSection;
   btnAddSection;
   imgTag;
   input;
+  imgPath;
 
   constructor(pathname) {
     super(pathname);
-
-    this.section = new Request();
-    this.sectionFile = new RequestFile();
 
     this.screen = document.querySelector('#screen');
     this.btnNewSection = document.querySelector('#btn-new-section');
 
     this.btnCancelSection = document.querySelector('#btn-cancel-section');
     this.btnAddSection = document.querySelector('#btn-add-section');
+    
+    this.imgTag = document.querySelector('#img-section-tag');
+    this.imgPath = ""
 
     this.input = document.querySelector('#img-section');
-    this.imgTag = document.querySelector('#img-section-tag');
     this.form = document.querySelector('#form-sections');
   }
   
@@ -60,6 +58,9 @@ export default class SectionScript extends Open {
   applyClassScreen(className) { this.screen.className = className }
 
   // Remplazar imagen base por imagen seleccionada
-  remplaceImg(img) { this.imgTag.setAttribute('src', img) }
+  remplaceImg(img) { 
+    this.imgTag.src = img;
+    this.imgPath = img; 
+  }
 
 }

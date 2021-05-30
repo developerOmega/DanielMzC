@@ -8,7 +8,6 @@ export default class SectionRequestScript extends SectionScript {
   sectionFile;
   form;
   listCont;
-  pathImg;
 
   constructor(pathname) {
     super(pathname);
@@ -21,32 +20,51 @@ export default class SectionRequestScript extends SectionScript {
   }
 
   main() {
-    this.listCont.innerHTML = "";
     this.getSections();
     
     // Mostrar pantalla screen
     this.btnNewSection.addEventListener('click', e => {
       this.applyClassScreen('screen');
-      this.addEventNewSection();
-      this.clearValues();
+      this.cleanForm();
     });
   }
+
+  // callback para agregar sections en evento
+  async eventNewSection(e) {
+    e.preventDefault();
+    await this.setSection(e.target.content.value, e.target.img.files[0]);
+  }
   
-  // Agregar sections
-  addEventNewSection() {
-    this.form.addEventListener('submit', async (e) => { 
-      e.preventDefault();
-      await this.setSection(e.target.content.value, e.target.img.files[0]);
-    });
+  // callback para actualizar sections en evento
+  async eventUpdateSection(e, id) {
+    e.preventDefault();
+    await this.updateSection(id, e.target.content.value, e.target.img.files[0]);
+  }
+
+
+  // Abrir formulario para editar secciones
+  openFormEdit(id, content, img) {  
+
+    this.form.content.value = content;
+    this.remplaceImg(img);
+
+    this.applyClassScreen('screen');
+
+    // Agregra evento sobmit para crear registro
+    this.form.onsubmit = async (e) => await this.eventUpdateSection(e, id);
   }
 
   // Limpiar valores de formulario
-  clearValues() {
+  cleanForm() {
+
+    console.log("Limpiando data")
+
     this.form.content.value = "";
     this.form.img.value = "";
-    this.imgTag.src = "/images/main_image.png";
+    this.remplaceImg("/images/main_image.png");
 
-    this.form.addEventListener('submit', this.addEventNewSection )
+    // Agregra evento sobmit para crear registro
+    this.form.onsubmit = async (e) => await this.eventNewSection(e);
   }
 
   // Crear item tag
@@ -79,26 +97,21 @@ export default class SectionRequestScript extends SectionScript {
     divButtons.appendChild(buttonDelete);
 
     buttonEdit.addEventListener('click', e => { this.openFormEdit( data.id, data.content, data.img ) })
+    buttonDelete.addEventListener('click', e => { this.deleteSection( data.id ) })
 
     this.listCont.appendChild(divItem);
   }
 
-  openFormEdit(id, content, img) {
-    this.form.content.value = content;
-    this.imgTag.src = img;
-    this.applyClassScreen('screen');
-    
-    this.form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      await this.updateSection(id, e.target.content, e.target.img.files[0]);
-    });
-  }
-
+  // Mostrar lista de secciones
   async getSections(){
     try {
-      const data = await this.section.getReq('/api/v1/sections');
-      console.log(data)
+      // Limpiar contenido html del list cont tag
+      this.listCont.innerHTML = "";
+
+      // Lista de las secciones pertenecientes al proyecto
+      const data = await this.section.getReq(`/api/v1/projects/${this.section.id}/sections`);
       
+      // Crear items tags
       data.sections.forEach( (section) => { this.createItem( section ) } )
 
     } catch (error) {
@@ -117,23 +130,27 @@ export default class SectionRequestScript extends SectionScript {
       } 
       
       // Crear registro de sections
-      const result = await this.section.setReq( query, data);
+      let result = await this.section.setReq( query, data);
 
       // Si la data de la imagen existe, subir imagen
       if(img) {
-        await this.setFile(img, data.section._id);
+        result = await this.setFile(img, result.section._id);
       }
+      
 
       // Limpiar inputs y ocultar screen tag
-      this.clearValues();
+      this.cleanForm();
       this.applyClassScreen('none');
+
+      // Agregra item a list tag
+      this.createItem( result.data );
 
     } catch (error) {
       console.error(error);
     }
   }
 
-  // Actualizar imagen de seccion
+  // Actualizar seccion
   async updateSection(id, content, img) {
     try {
       // Actualizar registro de sections
@@ -144,14 +161,40 @@ export default class SectionRequestScript extends SectionScript {
 
       // Si la data de la imagen existe, subir imagen
       if(img) {
-        await this.setFile(img, data.section._id);
+        await this.setFile(img, data.section.id);
       }
 
       // Limpiar inputs y ocultar screen tag
-      this.clearValues();
+      this.cleanForm();
       this.applyClassScreen('none');
+
+
+      // Actualizar lista de sections
+      this.getSections();
+
     } catch (error) {
       console.erro(error)
+    }
+  }
+
+  // Eliminar seccion
+  async deleteSection(id) {
+    try {
+
+      const section = await this.section.getReq(`/api/v1/sections/${id}`);
+
+      if (section.section.img != "/images/main_image.png") {
+        this.deleteFile(id);
+      }
+
+      // Eliminar registro de seccion
+      const data = await this.section.deleteReq(`/api/v1/sections/${id}`);
+
+      // Actualizar lista de sections
+      this.getSections();
+
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -164,12 +207,29 @@ export default class SectionRequestScript extends SectionScript {
       const data = new FormData();
       data.append('img', file);
       
-      console.log(this.imgTag.src)
+      console.log(this.imgPath)
+      
       // Hacer peticion para subir archivo
-      const result = this.imgTag.src == '/images/main_image.png' ?
+      const result = this.imgPath == '/images/main_image.png' || this.imgPath == `${this.sectionFile.url}/images/main_image.png` ?
         await this.sectionFile.setReq(query, data) :
         await this.sectionFile.updateReq( query, data);
+      
+      return result;
 
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // Eliminar imagen de seccion
+  async deleteFile(section_id) {
+    try {
+      const query = `/api/v1/sections/${section_id}/img`;
+      
+      // Hacer peticion para subir archivo
+      const result = await this.sectionFile.deleteReq(query);
+
+      console.log("Imagen Eliminada", result);
     } catch (error) {
       console.error(error);
     }

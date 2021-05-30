@@ -22,6 +22,25 @@ export default class SectionController {
     }
   }
 
+  public async byProject(req: Request, res: Response) {
+    let project_id:number = parseInt(req.params.id) 
+    
+    try {
+      const sections = await Section.byProjectId(project_id);
+
+      return res.status(200).json({
+        ok: true,
+        sections
+      })
+
+    } catch (err) {
+      return res.status(500).json({
+        ok: false,
+        err
+      })
+    }
+  }
+
   public async show(req: Request, res:  Response) {
     let id:number = parseInt(req.params.id);
 

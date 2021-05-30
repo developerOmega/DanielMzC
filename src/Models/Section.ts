@@ -35,6 +35,13 @@ export default class Section extends Model {
 
   // ==========================
 
+  static async byProjectId( project_id:number ) {
+    const data:any = await db.query(`
+      SELECT * FROM sections WHERE project_id = ? ORDER BY created_at ASC;
+    `, [project_id]);
+    return data;
+  }
+
   public async project() {
     const data:any = await db.query(`
       SELECT projects.id, projects.title, projects.description, projects.main_img, projects.admin_id, projects.updated_at, projects.created_at FROM projects 

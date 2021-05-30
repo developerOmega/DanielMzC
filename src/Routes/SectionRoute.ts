@@ -9,6 +9,7 @@ const SECTION_FILE = new SectionFilesController();
 
 router.get('/api/v1/sections', authAdmin, SECTION.index);
 router.get('/api/v1/sections/:id', authAdmin, SECTION.show);
+router.get('/api/v1/projects/:id/sections', authAdmin, SECTION.byProject);
 router.post('/api/v1/sections', authAdmin, SECTION.create);
 router.put('/api/v1/sections/:id', authAdmin, SECTION.update);
 router.delete('/api/v1/sections/:id', authAdmin, SECTION.delete);
