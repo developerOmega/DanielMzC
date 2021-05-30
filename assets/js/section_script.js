@@ -1,6 +1,5 @@
 import Open from './open';
-import Request from './requests/request';
-import RequestFile from './requests/requestFile';
+import Loading from './components/Loading';
 
 export default class SectionScript extends Open {
   
@@ -11,6 +10,9 @@ export default class SectionScript extends Open {
   imgTag;
   input;
   imgPath;
+
+  loadingComponent;
+
 
   constructor(pathname) {
     super(pathname);
@@ -26,10 +28,11 @@ export default class SectionScript extends Open {
 
     this.input = document.querySelector('#img-section');
     this.form = document.querySelector('#form-sections');
+
+    this.loadingComponent = new Loading( document.querySelector('#label-section-img') );
   }
   
   main() {
-    console.log("Agregar secciones");
 
     // Eliminar pantalla screen con 'Escape'
     document.addEventListener('keydown', e => {
@@ -44,11 +47,14 @@ export default class SectionScript extends Open {
     });
 
     // Mostrar imagenes seleccionadas en label
-    this.input.addEventListener('change', e => {
-      const img = this.getImgPath(e.target.files[0]);
-      this.remplaceImg(img);
-    });
-
+    this.input.onchange = (e) => this.eventChangeImg(e);
+    
+  }
+  
+  // Evento para mostrar imagen seleccionada en pantalla
+  eventChangeImg(e) {
+    const img = this.getImgPath(e.target.files[0]);
+    this.imgTag.src = img;
   }
 
   // Convertir imagen en url para poder mostrar en pantalla
@@ -62,5 +68,19 @@ export default class SectionScript extends Open {
     this.imgTag.src = img;
     this.imgPath = img; 
   }
+
+  // desactivar loader tag
+  dropLoading() {
+    // Eiminar loader
+    this.loadingComponent.drop();
+
+    // referencia de imagen
+    this.imgTag = document.querySelector('#img-section-tag');
+
+    // Referencia de input
+    this.input = document.querySelector('#img-section');
+    this.input.onchange = (e) => this.eventChangeImg(e);
+  }
+
 
 }

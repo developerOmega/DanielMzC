@@ -1,6 +1,7 @@
 import SectionScript from './section_script';
 import Request from './requests/request';
 import RequestFile from './requests/requestFile';
+import Loading from './components/Loading';
 
 export default class SectionRequestScript extends SectionScript {
 
@@ -122,7 +123,6 @@ export default class SectionRequestScript extends SectionScript {
   // Agregar seccion  
   async setSection(content, img) {
     try {
-
       const query = '/api/v1/sections';
       const data = {
         content,
@@ -153,6 +153,7 @@ export default class SectionRequestScript extends SectionScript {
   // Actualizar seccion
   async updateSection(id, content, img) {
     try {
+
       // Actualizar registro de sections
       const data = await this.section.updateReq( `/api/v1/sections/${id}`, { 
         content,
@@ -201,18 +202,23 @@ export default class SectionRequestScript extends SectionScript {
   // Agregar imagen de seccion
   async setFile(file, section_id) {
     try {
+
+      // Agregar loader tag
+      this.loadingComponent.set();
+      
       const query = `/api/v1/sections/${section_id}/img`;
 
       // Crear data
       const data = new FormData();
       data.append('img', file);
       
-      console.log(this.imgPath)
-      
       // Hacer peticion para subir archivo
       const result = this.imgPath == '/images/main_image.png' || this.imgPath == `${this.sectionFile.url}/images/main_image.png` ?
         await this.sectionFile.setReq(query, data) :
         await this.sectionFile.updateReq( query, data);
+
+      // Eliminar loader tag
+      this.dropLoading();
       
       return result;
 
@@ -224,16 +230,21 @@ export default class SectionRequestScript extends SectionScript {
   // Eliminar imagen de seccion
   async deleteFile(section_id) {
     try {
+
+      // Agregar loader tag
+      this.loadingComponent.set();
+
       const query = `/api/v1/sections/${section_id}/img`;
       
       // Hacer peticion para subir archivo
       const result = await this.sectionFile.deleteReq(query);
 
-      console.log("Imagen Eliminada", result);
+      // Eliminar loader tag
+      this.dropLoading();
+
     } catch (error) {
       console.error(error);
     }
   }
-  
 
 }
