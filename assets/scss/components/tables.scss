@@ -68,7 +68,28 @@
         .td-cont {
           padding: 1rem;
           background: $gray-card;
-          border-radius: 5px;  
+          border-radius: 5px;
+          
+          .list-cont {
+            .item {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              
+              padding: 2rem 0;
+              margin-top: 1rem;
+              border-bottom: 1px solid $gray;
+
+              .buttons-cont {
+                display: flex;
+                flex-direction: column;
+                button {
+                  margin-top: 2rem;
+                }
+              }
+            }
+          }
+          
         }
       }
     }

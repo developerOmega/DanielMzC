@@ -55,7 +55,6 @@ export default class SectionController {
 
     try {
       const params: SectionData = {
-        img: body.img,
         content: body.content,
         project_id: body.project_id
       }

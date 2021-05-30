@@ -18,7 +18,24 @@ export default class Request {
   }
 
   async getReq(link) {
-    
+    try {
+      const config = {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': this.token 
+        }
+      };
+      const query = `${this.url}${link}`;
+
+      const req = await fetch(query, config);
+      const result = await req.json();
+
+      return result;
+
+    } catch (error) {
+      throw error;
+    }
   }
 
   async setReq(link, data) {

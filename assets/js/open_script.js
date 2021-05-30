@@ -9,9 +9,10 @@ export default class OpenScript{
     const open = this.content.filter( data => {
       pathname = this.changePathname(window.location.pathname, data.pathname);
       return data.pathname == pathname;
-    } );
+    });
 
-    return open[0] ? open[0].main() : {};
+    open.forEach( data => data.main()  )
+
   }
 
   changePathname ( pathname, pathnameData ) {

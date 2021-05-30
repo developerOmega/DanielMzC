@@ -119,6 +119,18 @@ header.header {
       padding: 1rem;
       background: #EEE;
       border-radius: 5px; }
+      .table.tb-vertical tr td .td-cont .list-cont .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 0;
+        margin-top: 1rem;
+        border-bottom: 1px solid #C8C8C8; }
+        .table.tb-vertical tr td .td-cont .list-cont .item .buttons-cont {
+          display: flex;
+          flex-direction: column; }
+          .table.tb-vertical tr td .td-cont .list-cont .item .buttons-cont button {
+            margin-top: 2rem; }
   .table img {
     display: block;
     max-width: 20rem; }
@@ -205,3 +217,19 @@ header.header {
   align-items: center; }
   .loader svg {
     fill: #00CBF0 !important; }
+
+.screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(30, 30, 30, 0.5);
+  display: grid; }
+  .screen .form-screen {
+    background: #FFFFFF;
+    padding: 2rem;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem; }

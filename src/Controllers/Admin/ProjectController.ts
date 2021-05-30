@@ -30,10 +30,13 @@ export default class ProjectController {
         return res.redirect('back');
       }
 
+      const sections = await project.sections();
+
       return res.render('admin_panel/projects/show', {
         layout: 'layouts/admin',
         titlePage: project.title,
-        project
+        project,
+        sections,
       });
 
     } catch (error) {
