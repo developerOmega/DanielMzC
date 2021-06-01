@@ -109,4 +109,13 @@ describe("Test section api routes", () => {
     expect(response.statusCode).toEqual(200);
   })
 
+  test("It should response GET method to api sections by projects", async () => {
+    const project = await Project.first();
+
+    const response = await request(server.app)
+      .get(`/api/v1/projects/${project.id}/sections`)
+      .set('Authorization', token);
+    
+    expect(response.statusCode).toBe(200)
+  });
 });
