@@ -43,6 +43,8 @@
   }
 
   &.tb-vertical {
+    // overflow-x: auto;
+    white-space:normal;
     tr {
       th {
         width: 12rem;
@@ -62,7 +64,6 @@
         }
       }
       td {
-        width: 100%;
 
         padding: 0 2rem 2rem 2rem ;
         .td-cont {

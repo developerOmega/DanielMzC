@@ -4,19 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ titlePage }}</title>
-  {{!-- <link rel="stylesheet" href="css/styles.css"> --}}
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles_client.css">
+  <script src="https://kit.fontawesome.com/3a06726ffc.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-  <header> 
-    <h2> Daniel Mendoza </h2>
-  </header>
+  <div class="container">
+
+    <header class="header"> 
+      
+      <a href="/" class="logo"> Daniel Mendoza </a>
+
+      <nav class="nav">
+        <a href="/"> Inicio </a>
+        <a href="/projects"> Portafolio </a>
+        <a href="/blog"> Blog </a>
+        <a href="/contact"> Contactame </a>
+      </nav>
+
+    </header>
 
     {{{ body }}}
 
-  <footer>
-    Este es el footer
-  </footer>
+    <footer>
 
+      <div class="logo-area">
+        <a href="/" class="logo"> Daniel Mendoza </a>
+      </div>
+
+      <div class="options">
+        <h3 class="sub-title"> Menu </h3>
+        <a href="/"> Inicio </a>
+        <a href="/projects"> Portafolio </a>
+        <a href="/blog"> Blog </a>
+        <a href="/me"> Conoceme </a>
+        <a href="/contact"> Contactame </a>
+      </div>
+
+      <div class="networks">
+        <a href="/"> <i class="fab fa-linkedin"></i> </a>
+        <a href="/"> <i class="fab fa-facebook-square"></i> </a>
+        <a href="/"> <i class="fab fa-instagram"></i> </a>
+      </div>
+
+    </footer>
+
+  </div>
+  
   <script src="/js/bundle.js"></script>
 
 </body>

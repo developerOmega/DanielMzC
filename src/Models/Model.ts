@@ -80,10 +80,11 @@ export default class Model {
     return data;
   }
 
-  static async paginate (init:number = 0, limit:number = 0) {
+  static async paginate (init:number = 0, limit:number = 0, order:string = "ASC") {
 
-    let data = init != 0 && limit != 0 ? 
+    let data = init != 0 && limit != 0 ? order == "ASC" ?
       await db.query(`SELECT * FROM ${ this.table } ORDER BY id ASC OFFSET ? LIMIT ?`, [init - 1, limit]) :
+      await db.query(`SELECT * FROM ${ this.table } ORDER BY id DESC OFFSET ? LIMIT ?`, [init - 1, limit]) :
       await db.query(`SELECT * FROM ${this.table}`);
     return data;
   }

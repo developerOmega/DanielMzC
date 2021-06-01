@@ -1,1 +1,45 @@
-<div> Estamos en la pagina principal </div>
+<div class="content">
+
+  <div class="sliders">
+    {{!-- {Sliders} --}}
+  </div>
+
+  <div class="section items-text">
+    <h3 class="sub-title"> Hola </h3>
+    <div class="item">
+      La programación es una de las mejores actividades, ayuda a agilizar tu mente y desarrolla tu parte lógica. Una de las razones que me inspiraron para dedicarme a esta rama de la computación son los diferentes tipos de métodos con los puedes resolver un problema, pues no hay límites al momento de implementar tu lógica ya que algo que he aprendido de la programación es que todo es posible.
+    </div>
+    <div class="item">
+      DeveloperOmega busca publicar contenido relacionado con las nuevas tecnologías, con el fin de ayudar la comunidad de programadores.
+    </div>
+  </div>
+
+  <div class="section radio-inside">
+    <h2 class="title c-red"> Portafolio </h2>
+    
+    <div class="projects">
+      {{#projects  }}
+        {{> project id=id title=title main_img=main_img }}
+      {{/projects  }}
+    </div>
+
+  </div>
+
+  <div class="section">
+    <h2 class="title c-red"> Blog </h2>
+
+    <div class="blogs-main">
+      {{> blog_main blog=blog  }}
+
+      <div class="list">
+        {{#blogs }}
+          {{> blog_img id=id title=title main_img=main_img}}
+        {{/blogs }}
+      </div>
+    </div>
+  </div>
+
+  <div> Estamos en la pagina principal </div>
+
+</div>
+

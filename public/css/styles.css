@@ -100,37 +100,38 @@ header.header {
     .table.tb-horizontal tr th.end, .table.tb-horizontal tr td.end {
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px; }
-  .table.tb-vertical tr th {
-    width: 12rem;
-    padding: 1rem;
-    background: #1E1E1E;
-    color: #FFFFFF;
-    font-weight: 400; }
-    .table.tb-vertical tr th.init {
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px; }
-    .table.tb-vertical tr th.end {
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px; }
-  .table.tb-vertical tr td {
-    width: 100%;
-    padding: 0 2rem 2rem 2rem; }
-    .table.tb-vertical tr td .td-cont {
+  .table.tb-vertical {
+    white-space: normal; }
+    .table.tb-vertical tr th {
+      width: 12rem;
       padding: 1rem;
-      background: #EEE;
-      border-radius: 5px; }
-      .table.tb-vertical tr td .td-cont .list-cont .item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 2rem 0;
-        margin-top: 1rem;
-        border-bottom: 1px solid #C8C8C8; }
-        .table.tb-vertical tr td .td-cont .list-cont .item .buttons-cont {
+      background: #1E1E1E;
+      color: #FFFFFF;
+      font-weight: 400; }
+      .table.tb-vertical tr th.init {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px; }
+      .table.tb-vertical tr th.end {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px; }
+    .table.tb-vertical tr td {
+      padding: 0 2rem 2rem 2rem; }
+      .table.tb-vertical tr td .td-cont {
+        padding: 1rem;
+        background: #EEE;
+        border-radius: 5px; }
+        .table.tb-vertical tr td .td-cont .list-cont .item {
           display: flex;
-          flex-direction: column; }
-          .table.tb-vertical tr td .td-cont .list-cont .item .buttons-cont button {
-            margin-top: 2rem; }
+          justify-content: space-between;
+          align-items: center;
+          padding: 2rem 0;
+          margin-top: 1rem;
+          border-bottom: 1px solid #C8C8C8; }
+          .table.tb-vertical tr td .td-cont .list-cont .item .buttons-cont {
+            display: flex;
+            flex-direction: column; }
+            .table.tb-vertical tr td .td-cont .list-cont .item .buttons-cont button {
+              margin-top: 2rem; }
   .table img {
     display: block;
     max-width: 20rem; }

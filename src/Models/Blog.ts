@@ -10,6 +10,7 @@ export default class Blog extends Model {
   protected _content:string;
   protected _main_img?:string;
   protected _admin_id:number;
+  protected _admin: any;
 
   static ins: Blog;
   static table: string = "blogs";
@@ -21,6 +22,10 @@ export default class Blog extends Model {
     this._content = blog.content;
     this._main_img = blog.main_img;
     this._admin_id = blog.admin_id;
+
+    // Agregar nombre de administrador
+    this.admin().then( admin => this._admin = admin.name );
+    
   }
 
   // ========= GETTERS =========
@@ -44,6 +49,10 @@ export default class Blog extends Model {
 
   public get admin_id(): number {
     return this._admin_id;
+  }
+
+  public get their_admin(): any {
+    return this._admin;
   }
   
   
