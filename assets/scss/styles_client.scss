@@ -11,6 +11,9 @@
 body {
   background: $black;
 }
+img {
+  width: 100%;
+}
 
 .container {
   width: 100%;
@@ -75,3 +78,5 @@ body {
 
 
 @import './components_cl/link.scss';
+@import './components_cl/text.scss';
+@import './components_cl/sections.scss';

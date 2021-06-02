@@ -1,0 +1,27 @@
+.b-white {
+  background: $white;
+  color: $black;
+}
+
+.section {
+  margin: auto;
+}
+
+.radio-inside-bottom {
+  padding-top: 15rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    position:absolute;
+    top: 0;
+    right: -3rem;
+
+    content: "";
+    display: block;
+    width: 110%;
+    height: 12rem;
+    background: $black;
+    border-radius: 0 0 100% 100%;
+  }
+}
