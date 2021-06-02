@@ -5,4 +5,73 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  color: $white;
 }
+
+body {
+  background: $black;
+}
+
+.container {
+  width: 100%;
+  max-width: 2000px;
+  margin: auto;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 1.6rem;
+}
+
+
+.sub-title {
+  font-weight: 600;
+}
+
+.header {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+}
+
+.footer {
+  padding: 5rem 1rem 2rem;
+  background: $black_footer;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+
+  div {
+    margin: auto;
+  }
+
+  .options {
+    display: grid;
+    gap: 1rem;
+  }
+
+  a.link {
+    font-weight: 400;
+    &:hover {
+      color: $white;
+      text-decoration: underline;
+      text-decoration-color: $red;
+      text-decoration-thickness: .2rem;
+    }
+  }
+
+  .networks {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+
+@import './components_cl/link.scss';
