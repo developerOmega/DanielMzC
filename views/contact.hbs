@@ -1,1 +1,17 @@
-<div> Estamos en la pagina de contactos </div>
+<div class="content">
+  {{> header_in title="Contactame" description="Si deseas obtener una cotizacion de un proyecto puedes contactarme por gmail. Tratare de  responderte al instante." }}
+
+  <form class="form" method="POST">
+    <div class="field">
+      <label for="email"> Email </label>
+      <input type="email" name="email" id="email" placeholder="Escribe tu email" />
+    </div>
+
+    <div class="field">
+      <label for="message"> Mensaje </label>
+      <textarea name="message" id="message" placeholder="Escribe tu mensaje" cols="30" rows="10"></textarea>
+    </div>
+
+    <button class="btn b-red"> Enviar </button>
+  </form>
+</div>

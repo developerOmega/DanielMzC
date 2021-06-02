@@ -1,7 +1,9 @@
-{{> header_in title="Portafolio" description="Estos son algunos proyectos en los que he trabajado." }}
+<div class="content">
+  {{> header_in title="Portafolio" description="Estos son algunos proyectos en los que he trabajado." }}
 
-<div class="projects">
-  {{#projects  }}
-    {{> project id=id title=title main_img=main_img }}
-  {{/projects  }}
+  <div class="projects">
+    {{#projects  }}
+      {{> project id=id title=title main_img=main_img }}
+    {{/projects  }}
+  </div>
 </div>

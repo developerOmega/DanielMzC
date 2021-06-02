@@ -1,1 +1,14 @@
-<div> Estamos en la pagina de Project show </div>
+<div class="content">
+  {{> header_sh title=project.title description=project.description }}
+
+  <div class="sections">
+    {{#sections}}
+      <div class="section">
+        <img src="{{img}}" >
+        <p class="content"> {{ content }} </p>
+      </div>
+    {{/sections}}
+  </div>
+
+  <a href="/projects" class="link c-red"> Retornar </a>
+</div>

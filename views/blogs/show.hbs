@@ -1,5 +1,23 @@
-{{#> main title = titlePage }}
+<div class="content">
+  {{> header_sh title=blog.title description=blog.description }}
 
-  <div> Estamos en la pagina de Show index </div>
+  <div class="micro-content">
+    <div class="micro-text"> por {{ blog.their_admin }} </div>
+    <div class="micro-text"> {{ date_time blog.created_at }} </div>
+  </div>
 
-{{/main}}
+  <div class="text">
+    {{ blog.content }}
+  </div>
+
+  <div class="foot-page">
+    <h3 class="sub-title over-line c-red"> Te puede interezar. </h3>
+    <div class="grid col-3">
+      {{#blogs }}
+        {{> blog main_img=main_img title=title description=description id=id }}
+      {{/blogs }}
+    </div>
+  </div>
+
+</div>
+

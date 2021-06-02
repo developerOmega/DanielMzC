@@ -1,5 +1,6 @@
 import {  Request, Response } from 'express';
 import Project from '../Models/Project';
+import Section from '../Models/Section';
 
 export default class ProjectController {
   public async index(req: Request, res: Response) {
@@ -18,11 +19,22 @@ export default class ProjectController {
     
   }
 
-  public show(req: Request, res: Response) {
-    let id = req.params.id;
-    res.render('projects/show', {
-      layout: 'layouts/main',
-      titlePage: `project ${id}`
-    })
+  public async show(req: Request, res: Response) {
+    let id:number = parseInt(req.params.id);
+
+    try {
+      const project = await Project.byId(id);
+      const sections = await Section.byProjectId(id);
+
+      res.render('projects/show', {
+        layout: 'layouts/main',
+        titlePage: project.title,
+        project,
+        sections
+      });
+
+    } catch (error) {
+      return res.redirect('error_500')
+    }
   }
 }
