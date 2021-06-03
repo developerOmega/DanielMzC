@@ -9,6 +9,10 @@ $time-transition: 1s;
   margin: auto;
 }
 
+.margin-top {
+  margin-top: 5rem;
+}
+
 .radio-inside-top {
   padding-top: 15rem;
   position: relative;
@@ -29,7 +33,6 @@ $time-transition: 1s;
 }
 
 .projects {
-  padding-top: 2rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   
@@ -37,8 +40,6 @@ $time-transition: 1s;
     position: relative;
     z-index: 1;
 
-    .img-content {
-    }
     img {
       overflow: hidden;
       transition: ease $time-transition all;
@@ -46,7 +47,6 @@ $time-transition: 1s;
       display: block;
       width: 100%;
       height: 15rem;
-      object-fit: cover;
       filter: blur(0);
     }
     
@@ -54,6 +54,7 @@ $time-transition: 1s;
       transition: ease $time-transition all;
       position: absolute;
       z-index: 2;
+      top: 0;
       background: rgba($black, 0);
       width: 100%;
       height: 100%;
@@ -64,8 +65,12 @@ $time-transition: 1s;
       
       font-weight: 600;
       font-size: 1.4rem;
-      color: transparent;
       text-shadow: 0 0 5px rgba($white, 0);
+
+      p {
+        transition: ease $time-transition all;
+        filter: blur(100px);
+      }
     }
 
     &:hover {
@@ -74,6 +79,11 @@ $time-transition: 1s;
         background: rgba($black, .5);
         color:  $white;
         text-shadow: 0 0 5px rgba($white, .5);
+        p {
+          transition: ease $time-transition all;
+          filter: blur(0);
+        }
+  
       }
       img {
         transition: ease $time-transition all;
@@ -81,4 +91,29 @@ $time-transition: 1s;
       }
     }
   }
+}
+
+.blogs-main {
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+  .head {
+    padding: .5rem 0 2rem;
+  }
+
+  .text {
+    padding-bottom: 3rem;
+  }
+   
+}
+
+.list {
+  display: grid;
+  gap: 2rem;
 }

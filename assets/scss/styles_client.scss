@@ -13,6 +13,12 @@ body {
 }
 img {
   width: 100%;
+  object-fit: cover;
+}
+
+.over-line {
+  border-bottom: .3rem solid $red;
+  padding-bottom: .3rem;
 }
 
 .container {
@@ -80,3 +86,4 @@ img {
 @import './components_cl/link.scss';
 @import './components_cl/text.scss';
 @import './components_cl/sections.scss';
+@import './components_cl/btn.scss';

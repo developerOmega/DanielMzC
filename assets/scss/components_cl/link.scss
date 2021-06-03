@@ -33,4 +33,20 @@
   }
 }
 
+.blog_item_main {
+  text-decoration: none;
+  display: block;
+  display: grid;
+  gap: .5rem;
+  img {
+    height: 15rem;
+  }
+
+  &:hover {
+    h3 {
+      border-bottom: .3rem solid rgba($red, .8);
+      color: rgba($red, .8);
+    }
+  }
+}
 

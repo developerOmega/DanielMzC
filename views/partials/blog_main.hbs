@@ -1,11 +1,14 @@
-<div class="main">
-  <img src="{{ blog.main_img }}" alt="main img">
-  <div class="info">
-    <h3 class="sub-title"> {{ blog.title }} </h3>
-    <p class="micro-text c-red"> por {{ blog.their_admin }} </p>
+<div class="card">
+  <img class="img main" src="{{ blog.main_img }}">
+  
+  <div class="head">
+    <h2 class="sub-title c-black"> {{ blog.title }} </h2>
+    <div class="micro-text c-red"> por Daniel Mendoza </div>
   </div>
-  <div class="description">
+  
+  <div class="text c-black">
     {{ blog.description }}
   </div>
-  <button class="btn b-red"> ver mas </button>
+
+  <a class="btn b-red" href="/blog/{{blog.id}}"> Ver mas </a>
 </div>
