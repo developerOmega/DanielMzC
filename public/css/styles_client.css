@@ -149,6 +149,21 @@ img {
     background: #1E1E1E;
     border-radius: 0 0 100% 100%; }
 
+.radio-inside-bottom {
+  position: relative;
+  overflow: hidden; }
+  .radio-inside-bottom::after {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -3rem;
+    content: "";
+    display: block;
+    width: 110%;
+    height: 12rem;
+    background: #1E1E1E;
+    border-radius: 100% 100% 0 0%; }
+
 .projects {
   display: grid;
   grid-template-columns: repeat(4, 1fr); }
@@ -199,7 +214,7 @@ img {
   align-items: center; }
 
 .pd-4 {
-  padding: 4rem; }
+  padding: 0 4rem 4rem 4rem; }
 
 .card {
   width: 100%; }
@@ -211,6 +226,28 @@ img {
 .list {
   display: grid;
   gap: 2rem; }
+
+.header-index {
+  position: relative;
+  height: 28rem; }
+  .header-index .head {
+    position: relative;
+    z-index: 2;
+    background: rgba(30, 30, 30, 0.5);
+    height: 100%;
+    padding: 2rem 0; }
+    .header-index .head .title {
+      width: 100%;
+      background: #1E1E1E;
+      box-shadow: 3px 3px 5px 3px rgba(30, 30, 30, 0.5); }
+    .header-index .head .desc {
+      margin: 2rem 0;
+      text-align: center; }
+  .header-index img {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    z-index: 1; }
 
 .btn {
   width: 100%;

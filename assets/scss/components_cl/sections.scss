@@ -32,6 +32,25 @@ $time-transition: 1s;
   }
 }
 
+.radio-inside-bottom {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    position:absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -3rem;
+
+    content: "";
+    display: block;
+    width: 110%;
+    height: 12rem;
+    background: $black;
+    border-radius: 100% 100% 0 0%;
+  }
+}
+
 .projects {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -103,7 +122,7 @@ $time-transition: 1s;
 
 
 .pd-4 {
-  padding: 4rem;
+  padding: 0 4rem 4rem 4rem;
 }
 
 .card {
@@ -121,4 +140,37 @@ $time-transition: 1s;
 .list {
   display: grid;
   gap: 2rem;
+}
+
+
+.header-index {
+  position: relative;
+  height: 28rem;
+
+  .head {
+    position: relative;
+    z-index: 2;
+    background: rgba($black, .5);
+    height: 100%;
+
+    padding: 2rem 0;
+    
+    .title {
+      width: 100%;
+      background: $black;
+      box-shadow: 3px 3px 5px 3px rgba($black, .5);
+    }
+
+    .desc {
+      margin: 2rem 0;
+      text-align: center;
+    }
+  }
+  img {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    z-index: 1;
+  }
+
 }
