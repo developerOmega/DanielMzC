@@ -1,18 +1,18 @@
 <div class="content">
-  {{> header_sh title=blog.title description=blog.description }}
+  {{> header_sh main_img=blog.main_img title=blog.title description=blog.description }}
 
-  <div class="micro-content">
+  <div class="micro-content max-width pd-cont">
     <div class="micro-text"> por {{ blog.their_admin }} </div>
     <div class="micro-text"> {{ date_time blog.created_at }} </div>
   </div>
 
-  <div class="text">
+  <div class="text max-width pd-cont">
     {{ blog.content }}
   </div>
 
-  <div class="foot-page">
-    <h3 class="sub-title over-line c-red"> Te puede interezar. </h3>
-    <div class="grid col-3">
+  <div class="foot-page pd-cont">
+    <h3 class="sub-title over-line c-red mg-top"> Te puede interezar. </h3>
+    <div class="grid col-3 gap-4">
       {{#blogs }}
         {{> blog main_img=main_img title=title description=description id=id }}
       {{/blogs }}

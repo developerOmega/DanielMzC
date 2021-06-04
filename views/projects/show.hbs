@@ -1,7 +1,7 @@
 <div class="content">
-  {{> header_sh title=project.title description=project.description }}
+  {{> header_sh main_img=project.main_img title=project.title description=project.description }}
 
-  <div class="sections">
+  <div class="sections max-width pd-cont">
     {{#sections}}
       <div class="section">
         <img src="{{img}}" >
@@ -10,5 +10,7 @@
     {{/sections}}
   </div>
 
-  <a href="/projects" class="link c-red"> Retornar </a>
+  <div class="pd-cont">
+    <a href="/projects" class="link c-red"> Retornar </a>
+  </div>
 </div>

@@ -9,6 +9,18 @@ $time-transition: 1s;
   margin: auto;
 }
 
+.sections {
+  display: grid;
+  gap: 20rem;
+  div.section {
+    width: 100%;
+    p {
+      padding: 2rem 0;
+      text-align: center;
+    }
+  }
+}
+
 .margin-top {
   margin-top: 5rem;
 }
@@ -40,7 +52,7 @@ $time-transition: 1s;
     position:absolute;
     z-index: 1;
     bottom: 0;
-    right: -3rem;
+    right: -4rem;
 
     content: "";
     display: block;
@@ -121,8 +133,12 @@ $time-transition: 1s;
 }
 
 
-.pd-4 {
+.pd-cont {
   padding: 0 4rem 4rem 4rem;
+}
+
+.mg-top {
+  margin-bottom: 4rem;
 }
 
 .card {
@@ -173,4 +189,39 @@ $time-transition: 1s;
     z-index: 1;
   }
 
+}
+
+.header-show {
+  position: relative;
+  height: 52rem;
+  
+  .head {
+    padding-bottom: 15rem;
+    position: absolute;
+    z-index: 2;
+    background: rgba($black, .5);
+    height: 100%;
+    width: 100%;
+    
+    display: grid;
+    align-content: end;
+
+    .title {
+      width: 100%;
+      background: $black;
+      box-shadow: 3px 3px 5px 3px rgba($black, .5);
+    }
+
+    .desc {
+      margin: 2rem 0;
+      padding: 0 2rem;
+      text-align: center;
+    }
+  }
+  img {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    z-index: 1;
+  }
 }

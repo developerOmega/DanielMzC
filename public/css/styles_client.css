@@ -124,12 +124,25 @@ img {
 .c-black {
   color: #1E1E1E; }
 
+.max-width {
+  max-width: 1200px;
+  margin: auto; }
+
 .b-white {
   background: #FFFFFF;
   color: #1E1E1E; }
 
 .section {
   margin: auto; }
+
+.sections {
+  display: grid;
+  gap: 20rem; }
+  .sections div.section {
+    width: 100%; }
+    .sections div.section p {
+      padding: 2rem 0;
+      text-align: center; }
 
 .margin-top {
   margin-top: 5rem; }
@@ -156,7 +169,7 @@ img {
     position: absolute;
     z-index: 1;
     bottom: 0;
-    right: -3rem;
+    right: -4rem;
     content: "";
     display: block;
     width: 110%;
@@ -213,8 +226,11 @@ img {
   gap: 5rem;
   align-items: center; }
 
-.pd-4 {
+.pd-cont {
   padding: 0 4rem 4rem 4rem; }
+
+.mg-top {
+  margin-bottom: 4rem; }
 
 .card {
   width: 100%; }
@@ -244,6 +260,32 @@ img {
       margin: 2rem 0;
       text-align: center; }
   .header-index img {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    z-index: 1; }
+
+.header-show {
+  position: relative;
+  height: 52rem; }
+  .header-show .head {
+    padding-bottom: 15rem;
+    position: absolute;
+    z-index: 2;
+    background: rgba(30, 30, 30, 0.5);
+    height: 100%;
+    width: 100%;
+    display: grid;
+    align-content: end; }
+    .header-show .head .title {
+      width: 100%;
+      background: #1E1E1E;
+      box-shadow: 3px 3px 5px 3px rgba(30, 30, 30, 0.5); }
+    .header-show .head .desc {
+      margin: 2rem 0;
+      padding: 0 2rem;
+      text-align: center; }
+  .header-show img {
     position: absolute;
     height: 100%;
     top: 0;
