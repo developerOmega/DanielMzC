@@ -16,3 +16,22 @@
     height: 15rem;
   }
 }
+
+@media screen and (max-width: 750px) {
+  .grid {
+    &.col-3 {
+      grid-template-columns: 1fr 1fr;
+    }
+    &.gap-4 {
+      gap: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .grid {
+    &.col-3 {
+      grid-template-columns: 1fr;
+    }
+  }
+}

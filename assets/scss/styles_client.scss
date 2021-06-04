@@ -45,7 +45,11 @@ img {
   .nav {
     display: flex;
     justify-content: space-between;
+    font-size: 14px;
     height: 100%;
+  }
+  .menu-resp {
+    display: none;
   }
 }
 
@@ -82,6 +86,24 @@ img {
   }
 }
 
+
+@media screen and (max-width: 600px) {
+  .header {
+    .nav {
+      display: none;
+    }
+
+    .menu-resp {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 5rem;
+  }
+}
 
 @import './components_cl/link.scss';
 @import './components_cl/text.scss';

@@ -225,3 +225,56 @@ $time-transition: 1s;
     z-index: 1;
   }
 }
+
+
+@media screen and (max-width: 750px) {
+  .blogs-main {
+    grid-template-columns: 1fr;
+  }
+
+  .radio-inside-bottom {
+    &::after {
+      right: -2rem;
+    }
+  }
+
+  .pd-cont {
+    padding: 0 2rem 2rem 2rem;
+  }
+  
+
+  .sections {
+    gap: 5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .radio-inside-top {
+    &::before {
+      right: -1.5rem;
+    }
+  }
+
+  .radio-inside-bottom {
+    &::after {
+      right: -1.5rem;
+    }
+  }
+
+  .projects {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  .radio-inside-bottom {
+    &::after {
+      right: -1.5rem;
+    }
+  }
+}

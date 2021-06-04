@@ -36,7 +36,10 @@ img {
   .header .nav {
     display: flex;
     justify-content: space-between;
+    font-size: 14px;
     height: 100%; }
+  .header .menu-resp {
+    display: none; }
 
 .footer {
   padding: 5rem 1rem 2rem;
@@ -60,6 +63,16 @@ img {
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(3, auto); }
+
+@media screen and (max-width: 600px) {
+  .header .nav {
+    display: none; }
+  .header .menu-resp {
+    display: flex;
+    justify-content: flex-end; }
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 5rem; } }
 
 .link-nav {
   text-decoration: none;
@@ -127,6 +140,10 @@ img {
 .max-width {
   max-width: 1200px;
   margin: auto; }
+
+@media screen and (max-width: 600px) {
+  .items-text {
+    padding: 5rem 2rem; } }
 
 .b-white {
   background: #FFFFFF;
@@ -291,6 +308,30 @@ img {
     top: 0;
     z-index: 1; }
 
+@media screen and (max-width: 750px) {
+  .blogs-main {
+    grid-template-columns: 1fr; }
+  .radio-inside-bottom::after {
+    right: -2rem; }
+  .pd-cont {
+    padding: 0 2rem 2rem 2rem; }
+  .sections {
+    gap: 5rem; } }
+
+@media screen and (max-width: 600px) {
+  .radio-inside-top::before {
+    right: -1.5rem; }
+  .radio-inside-bottom::after {
+    right: -1.5rem; }
+  .projects {
+    grid-template-columns: 1fr 1fr; } }
+
+@media screen and (max-width: 450px) {
+  .projects {
+    grid-template-columns: 1fr; }
+  .radio-inside-bottom::after {
+    right: -1.5rem; } }
+
 .btn {
   width: 100%;
   display: block;
@@ -313,6 +354,15 @@ img {
   .b-red:hover {
     background: rgba(213, 29, 11, 0.9); }
 
+.btn-bars {
+  display: block;
+  background: transparent;
+  font-size: 1.8rem;
+  border: none;
+  cursor: pointer; }
+  .btn-bars:hover i {
+    color: #D51D0B; }
+
 .grid {
   display: grid; }
   .grid.col-3 {
@@ -326,8 +376,19 @@ img {
   .grid-area.card img {
     height: 15rem; }
 
+@media screen and (max-width: 750px) {
+  .grid.col-3 {
+    grid-template-columns: 1fr 1fr; }
+  .grid.gap-4 {
+    gap: 2rem; } }
+
+@media screen and (max-width: 600px) {
+  .grid.col-3 {
+    grid-template-columns: 1fr; } }
+
 .form {
   display: grid;
+  grid-template-columns: 100%;
   gap: 3rem; }
   .form .field {
     display: flex;
@@ -347,3 +408,5 @@ img {
       .form .field input[type="email"]:focus, .form .field textarea:focus {
         border-bottom: 0.2rem solid rgba(213, 29, 11, 0.8);
         box-shadow: 1px 1px 15px rgba(213, 29, 11, 0.8); }
+    .form .field textarea {
+      resize: none; }

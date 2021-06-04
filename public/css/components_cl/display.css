@@ -10,3 +10,13 @@
   grid-template-rows: 15rem 5rem auto 3rem; }
   .grid-area.card img {
     height: 15rem; }
+
+@media screen and (max-width: 750px) {
+  .grid.col-3 {
+    grid-template-columns: 1fr 1fr; }
+  .grid.gap-4 {
+    gap: 2rem; } }
+
+@media screen and (max-width: 600px) {
+  .grid.col-3 {
+    grid-template-columns: 1fr; } }

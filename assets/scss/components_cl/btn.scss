@@ -25,3 +25,16 @@
     background: rgba($red, .9)
   }
 }
+
+.btn-bars {
+  display: block;
+  background: transparent;
+  font-size: 1.8rem;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    i {
+      color: $red;
+    }
+  }
+}
