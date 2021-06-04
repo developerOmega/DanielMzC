@@ -1,0 +1,29 @@
+.form {
+  display: grid;
+  gap: 3rem;
+  .field {
+    display: flex;
+    flex-direction: column;
+    label {
+      font-size: .9rem;
+    }
+
+    input[type="email"], textarea {
+      padding: .6rem;
+      margin-top: .5rem;
+      border:none;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom: .2rem solid $red;
+      outline: none;
+      color: $black;
+      font-size: 14px;
+
+      &:focus {
+        border-bottom: .2rem solid rgba($red, .8);
+        box-shadow: 1px 1px 15px   rgba($red, .8);
+
+      }
+    }
+  }
+}

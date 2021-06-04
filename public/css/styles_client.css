@@ -257,7 +257,9 @@ img {
   padding: 1rem;
   background: #C8C8C8;
   border-radius: 5px;
+  border: none;
   font-size: 16px;
+  cursor: pointer;
   box-shadow: 2px 2px 5px rgba(200, 200, 200, 0.5); }
   .btn:hover {
     background: rgba(200, 200, 200, 0.9); }
@@ -281,3 +283,25 @@ img {
   grid-template-rows: 15rem 5rem auto 3rem; }
   .grid-area.card img {
     height: 15rem; }
+
+.form {
+  display: grid;
+  gap: 3rem; }
+  .form .field {
+    display: flex;
+    flex-direction: column; }
+    .form .field label {
+      font-size: .9rem; }
+    .form .field input[type="email"], .form .field textarea {
+      padding: .6rem;
+      margin-top: .5rem;
+      border: none;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom: 0.2rem solid #D51D0B;
+      outline: none;
+      color: #1E1E1E;
+      font-size: 14px; }
+      .form .field input[type="email"]:focus, .form .field textarea:focus {
+        border-bottom: 0.2rem solid rgba(213, 29, 11, 0.8);
+        box-shadow: 1px 1px 15px rgba(213, 29, 11, 0.8); }
