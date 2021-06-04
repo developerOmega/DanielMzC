@@ -109,7 +109,7 @@ img {
   line-height: 1.6rem; }
 
 .micro-text {
-  font-size: 14px;
+  font-size: .8rem;
   font-weight: 400; }
 
 .title {
@@ -198,6 +198,9 @@ img {
   gap: 5rem;
   align-items: center; }
 
+.pd-4 {
+  padding: 4rem; }
+
 .card {
   width: 100%; }
   .card .head {
@@ -228,3 +231,16 @@ img {
   box-shadow: 2px 2px 10px rgba(213, 29, 11, 0.7); }
   .b-red:hover {
     background: rgba(213, 29, 11, 0.9); }
+
+.grid {
+  display: grid; }
+  .grid.col-3 {
+    grid-template-columns: repeat(3, 1fr); }
+  .grid.gap-4 {
+    gap: 4rem; }
+
+.grid-area {
+  display: grid;
+  grid-template-rows: 15rem 5rem auto 3rem; }
+  .grid-area.card img {
+    height: 15rem; }

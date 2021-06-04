@@ -1,0 +1,18 @@
+.grid {
+  display: grid;
+  &.col-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &.gap-4 {
+    gap: 4rem;
+  }
+}
+
+.grid-area {
+  display: grid;
+  grid-template-rows: 15rem 5rem auto 3rem ;
+
+  &.card img {
+    height: 15rem;
+  }
+}
