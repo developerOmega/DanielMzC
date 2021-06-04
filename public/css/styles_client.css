@@ -395,7 +395,7 @@ img {
     flex-direction: column; }
     .form .field label {
       font-size: .9rem; }
-    .form .field input[type="email"], .form .field textarea {
+    .form .field input[type="email"], .form .field input[type="password"], .form .field input[type="text"], .form .field textarea {
       padding: .6rem;
       margin-top: .5rem;
       border: none;
@@ -405,7 +405,7 @@ img {
       outline: none;
       color: #1E1E1E;
       font-size: 14px; }
-      .form .field input[type="email"]:focus, .form .field textarea:focus {
+      .form .field input[type="email"]:focus, .form .field input[type="password"]:focus, .form .field input[type="text"]:focus, .form .field textarea:focus {
         border-bottom: 0.2rem solid rgba(213, 29, 11, 0.8);
         box-shadow: 1px 1px 15px rgba(213, 29, 11, 0.8); }
     .form .field textarea {

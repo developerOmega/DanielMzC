@@ -1,8 +1,17 @@
-  <form id="login" action="/admin_panel/login" method="POST" >
-  
-    <input type="text" name="email" placeholder="Email">
-    <input type="password" name="password" placeholder="Password">
+<div class="content">
+  {{> header_in title="Login" description="" }}
 
-    <button> Ingresar </button>
+  <form class="form pd-cont" method="POST">
+    <div class="field">
+      <label for="email"> Email: </label>
+      <input type="email" name="email" id="email" placeholder="Ingresa tu email" />
+    </div>
 
+    <div class="field">
+      <label for="message"> Password: </label>
+      <input type="password" name="password" placeholder="Ingresa tu password">
+    </div>
+
+    <button class="btn b-red"> Ingresar </button>
   </form>
+</div>
