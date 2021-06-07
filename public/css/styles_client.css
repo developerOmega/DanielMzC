@@ -421,24 +421,14 @@ img {
       resize: none; }
 
 header.watch {
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   width: 100%;
   z-index: 3; }
-  header.watch.in_up {
-    top: 0;
-    animation: in_up .5s ease; }
-  header.watch.in_down {
+  header.watch.in-up {
+    top: 0rem;
+    transition: ease .5s all; }
+  header.watch.in-down {
     top: -6rem;
-    animation: in_down .5s ease; }
-
-@keyframes in_up {
-  0% {
-    top: -6rem; }
-  100% {
-    top: 0; } }
-
-@keyframes in_down {
-  0% {
-    top: 0; }
-  100% {
-    top: -6rem; } }
+    transition: ease .5s all; }
