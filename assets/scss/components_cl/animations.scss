@@ -1,3 +1,8 @@
+
+// ============================================
+// Scroll de navbar
+// ============================================
+
 header.watch {
   position: -webkit-sticky;
   position: sticky;
@@ -11,5 +16,76 @@ header.watch {
   &.in-down {
     top: -6rem;
     transition: ease .5s all;
+  }
+}
+
+
+// ======================================
+// active nav responsive
+// ======================================
+
+.view-nav {
+  left: 0;
+}
+
+.in-left-nav {
+  animation: in_left_nav .5s ease;
+}
+
+.in-right-nav {
+  animation: in_right_nav .5s ease;
+}
+
+@keyframes in_left_nav {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes in_right_nav {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+
+// ======================================
+// out container
+// ======================================
+
+.cont-resp {
+  position: relative;
+  right: 0;
+}
+
+.in-right-cont {
+  animation: in_right_container .5s ease;
+}
+
+.in-left-cont {
+  animation: in_left_container .5s ease;
+}
+
+@keyframes in_right_container {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+@keyframes in_left_container {
+  0% {
+    right: 100%;
+  }
+  100% {
+    right: 0;
   }
 }

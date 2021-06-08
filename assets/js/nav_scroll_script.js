@@ -18,17 +18,14 @@ export default class NavScrollScript extends Open {
 
       // No hay scroll
       if( oldScroll == 0 ) {
-        console.log("No hay scroll");
         this.scrollOut();
       }
       // Scroll up      
       else if(window.scrollY < oldScroll) {
-        console.log("Hay scroll Up");
         this.scrollUp()
       }
       // Scroll down
       else {
-        console.log("Hay scroll Down");
         this.scrollDown()
       }
       
