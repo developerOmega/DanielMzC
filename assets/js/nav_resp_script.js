@@ -15,7 +15,6 @@ export default class NavRespScript extends Open {
   }
 
   main() {
-    console.log(this.btnNav);
     
     this.btnNav.onclick = e => this.onNav();
     this.btnNavDrop.onclick = e => this.offNav();

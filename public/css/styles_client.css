@@ -503,3 +503,100 @@ header.watch {
     right: 100%; }
   100% {
     right: 0; } }
+
+.slider {
+  overflow: hidden;
+  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 5px; }
+  .slider .scontents {
+    position: relative;
+    z-index: 1; }
+    .slider .scontents .img {
+      width: 100%;
+      display: block;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 5px;
+      position: relative; }
+    .slider .scontents .info {
+      background: rgba(30, 30, 30, 0.5);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      max-width: 700px;
+      height: 100%;
+      padding: 2rem;
+      display: grid;
+      grid-template-rows: 2fr 1fr;
+      align-items: center;
+      border-radius: 5px;
+      z-index: 2; }
+      .slider .scontents .info p {
+        font-size: 1.5rem;
+        font-weight: 400;
+        width: 100%;
+        color: white;
+        position: relative; }
+      .slider .scontents .info a {
+        position: relative; }
+    .slider .scontents .in .img {
+      z-index: 2;
+      animation: right_img 2s ease; }
+    .slider .scontents .in .info {
+      animation: left_info 2s ease; }
+      .slider .scontents .in .info p {
+        animation: blur_letter 3s ease; }
+    .slider .scontents .info a.difum {
+      filter: blur(100px); }
+    .slider .scontents .info a.blur {
+      animation: blur_link .5s ease; }
+    .slider .scontents .info a.focus {
+      animation: focus_link .5s ease;
+      filter: blur(0px); }
+    .slider .scontents .after .img {
+      position: absolute;
+      top: 0;
+      z-index: 1;
+      animation: right_after_img 2s ease; }
+
+@keyframes right_img {
+  0% {
+    right: 0%; }
+  100% {
+    right: 100%; } }
+
+@keyframes right_after_img {
+  0% {
+    right: -60%; }
+  100% {
+    right: 0%; } }
+
+@keyframes left_info {
+  0% {
+    left: 0%; }
+  50% {
+    left: -100%; }
+  100% {
+    left: 0%; } }
+
+@keyframes blur_letter {
+  0% {
+    filter: blur(1px); }
+  50% {
+    filter: blur(10px);
+    top: 1000px; }
+  100% {
+    top: 0;
+    filter: blur(1px); } }
+
+@keyframes blur_link {
+  0% {
+    filter: blur(1px); }
+  100% {
+    filter: blur(100px); } }
+
+@keyframes focus_link {
+  0% {
+    filter: blur(100px); }
+  100% {
+    filter: blur(1px); } }
