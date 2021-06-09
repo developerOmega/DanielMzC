@@ -6,10 +6,16 @@ import SliderScript from "./slider_script";
 
 const scripts = [
   new LoginScript('/admin_panel/login'),
-  new NavScrollScript('/'),
-  new NavRespScript('/'),
   new SliderScript('/')
 ]
+
+// Activar acciones de nav scroll en todo el sitio
+const navScroll = new NavScrollScript('/');
+navScroll.main();
+
+// Activar acciones de nav resp en todo el sitio
+const navResp = new NavRespScript('/');
+navResp.main();
 
 const openScript = new OpenScript( scripts );
 openScript.on();

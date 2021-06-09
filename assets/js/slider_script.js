@@ -11,13 +11,15 @@ export default class SliderScript extends Open {
     super(pathname);
 
     this.sliderCont = document.querySelector('#slider-cont');
-    this.sliderCont.className = "none";
-
+    
     this.slider = document.querySelector("#slider");
-    this.data = this.setData();
+    this.data = [];
   }
-
+  
   main() {
+    this.sliderCont.className = "none";
+    this.data = this.setData();
+
     const slider = new Slider.on(this.slider, this.data);
     slider.active(15000);
   }
