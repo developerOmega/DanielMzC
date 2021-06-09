@@ -4,6 +4,17 @@
     {{!-- {Sliders} --}}
     <div class="scontents" id="slider">
     </div>
+
+    <div id="slider-cont">
+      {{#sliders }}
+        <div id="sl_{{ id }}">
+          <span>{{ img }}</span>
+          <span>{{ content }}</span>
+          <span>{{ url }}</span>
+        </div>
+      {{/sliders }}
+    </div>
+
   </div>
 
   <div class="section items-text">
