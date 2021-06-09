@@ -6,15 +6,15 @@
   "scripts": {
     "test": "jest --detectOpenHandles",
     
-    "js": "webpack",
-    "scss": "node-sass assets/scss/ -o public/css/",
+    "js": "webpack --watch",
+    "scss": "node-sass --watch assets/scss/ -o public/css/",
     "assets": "npm run js & npm run scss",
-    
+
     "postinstall": "tsc",
     "nodemon": "nodemon dist/index.js",
-    "build": "tsc && npm run assets",
+    "build": "tsc",
     "start": "node dist/index.js"
-
+    
   },
   "author": "Daniel Mendoza",
   "license": "ISC",
