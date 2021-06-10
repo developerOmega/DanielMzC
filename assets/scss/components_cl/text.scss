@@ -9,8 +9,11 @@
 }
 
 .text {
-  font-family: 'Source Serif Pro', serif;
-  line-height: 1.6rem;
+  p, li, strong{
+    font-family: 'Source Serif Pro', serif;
+    line-height: 2rem;
+    word-spacing: .1rem;
+  }
 }
 
 .micro-text{

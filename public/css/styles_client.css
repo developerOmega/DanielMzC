@@ -154,9 +154,10 @@ img {
     padding-top: 2rem;
     line-height: 1.6rem; }
 
-.text {
+.text p, .text li, .text strong {
   font-family: 'Source Serif Pro', serif;
-  line-height: 1.6rem; }
+  line-height: 2rem;
+  word-spacing: .1rem; }
 
 .micro-text {
   font-size: .8rem;

@@ -3,10 +3,12 @@ import LoginScript from './login_script';
 import NavScrollScript from "./nav_scroll_script";
 import NavRespScript from './nav_resp_script';
 import SliderScript from "./slider_script";
+import ViewBlogScript from "./view_blog_script";
 
 const scripts = [
   new LoginScript('/admin_panel/login'),
-  new SliderScript('/')
+  new SliderScript('/'),
+  new ViewBlogScript('#content-blog', '/blog/:id')
 ]
 
 // Activar acciones de nav scroll en todo el sitio
