@@ -59,11 +59,10 @@ export default class FilesController {
       const publicLink = await DropboxApi.on().sharedLink(dataPath);
 
       //  Buscar Modelo por id
-      let instance = await this.ins.byId(id);
+      let instance:any = await this.ins.byId(id);
 
        // Actualizar columna de imagen de Modelo
        let data = await instance.update(this.updateTo( this.ins.imageUrl(publicLink.result.url) ));
-
 
        return res.json({
          ok: true,
@@ -86,7 +85,7 @@ export default class FilesController {
   // Controlador para eliminar imagenes de Modelo
   public async delete(req: Request, res: Response) {
     let id:number = parseInt(req.params.id);
-    let instance = await this.ins.byId(id);
+    let instance:any = await this.ins.byId(id);
 
     // Si la propiedad de la imagen del Modelo es igual al nombre por default de imagenes, entonces retornara un json con error 400
     if(eval("instance." + this.prop) === this.fileName){
@@ -148,7 +147,7 @@ export default class FilesController {
       
       const file = await DropboxApi.on().update(path, nPath, img.data);
 
-      let instance = await this.ins.byId(id);
+      let instance:any = await this.ins.byId(id);
 
       let data = await instance.update(this.updateTo( this.ins.imageUrl(file.result.url) ));
 

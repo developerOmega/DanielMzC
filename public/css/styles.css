@@ -26,6 +26,12 @@ h1.title {
 .none {
   display: none; }
 
+.text {
+  text-align: left;
+  line-height: 1.6rem; }
+  .text p, .text li {
+    font-family: 'Source Serif Pro', sans-serif; }
+
 .link {
   text-decoration: none;
   font-size: 15px;

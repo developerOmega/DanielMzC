@@ -20,7 +20,7 @@ export default class Blog extends Model {
     this._title = blog.title;
     this._description = blog.description;
     this._content = blog.content;
-    this._main_img = blog.main_img;
+    this._main_img = <string> blog.main_img;
     this._admin_id = blog.admin_id;
 
     // Agregar nombre de administrador
@@ -65,5 +65,24 @@ export default class Blog extends Model {
       WHERE blogs.id = ?
     `, [this.id]);
     return data[0];
+  }
+
+  static async create(data:any) {
+
+    let query:any = await db.queryPost(
+      `INSERT INTO ${this.table} data? VALUES params? RETURNING *`,
+      [data]
+    );
+
+    this.ins = new this(query[0], this.table);
+
+    return this.ins;
+  }
+
+  async update(body:any) {
+
+    let query:any =  await db.queryPatch(`UPDATE ${ this.table } SET data? WHERE id = ? RETURNING *`, [body, this._id]);
+    return query[0];
+
   }
 }
