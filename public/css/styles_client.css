@@ -192,7 +192,8 @@ img {
 
 .sections {
   display: grid;
-  gap: 20rem; }
+  gap: 20rem;
+  max-width: 38rem; }
   .sections div.section {
     width: 100%; }
     .sections div.section p {
