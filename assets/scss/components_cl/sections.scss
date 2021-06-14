@@ -12,9 +12,13 @@ $time-transition: 1s;
 .sections {
   display: grid;
   gap: 20rem;
-  max-width: 38rem;
   div.section {
     width: 100%;
+    img {
+      display: block;
+      max-width: 34rem;
+      margin: auto;
+    }
     p {
       padding: 2rem 0;
       text-align: center;
