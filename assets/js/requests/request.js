@@ -5,7 +5,6 @@ export default class Request {
   token = getCookie('token');
   id = window.location.pathname.split('/') [window.location.pathname.split('/').length - 1];
   
-  
   setConfig( method, body = {} ){
     return {
       method,
