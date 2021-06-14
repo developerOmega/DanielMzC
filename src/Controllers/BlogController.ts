@@ -26,9 +26,9 @@ export default class BlogController {
     let id:number = parseInt(req.params.id);
 
     try {      
-      const blog = await Blog.byId(id)
+      const blog:any = await Blog.byId(id)
 
-      const blogs = await Blog.paginate(2, 4, "DESC");
+      const blogs = await Blog.paginate(2, 3, "DESC");
 
       res.render('blogs/show', {
         layout: 'layouts/main',

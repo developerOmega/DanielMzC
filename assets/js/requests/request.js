@@ -1,7 +1,7 @@
 import { getCookie } from "../cookies";
 
 export default class Request {
-  url = "https://danielmzc.herokuapp.com";
+  url = "http://localhost:3000";
   token = getCookie('token');
   id = window.location.pathname.split('/') [window.location.pathname.split('/').length - 1];
   
