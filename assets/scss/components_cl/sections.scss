@@ -12,6 +12,7 @@ $time-transition: 1s;
 .sections {
   display: grid;
   gap: 20rem;
+  max-width: 38rem;
   div.section {
     width: 100%;
     p {
