@@ -44,3 +44,11 @@ export interface SectionData {
   content: string,
   project_id: number
 }
+
+export interface EmailData {
+  _from: string,
+  _to: string,
+  subject: string,
+  html: string,
+  admin_id: number
+}
