@@ -31,7 +31,7 @@ export default class Email extends Model {
   }
 
   public get _to(): string {
-    return this._to;
+    return this.__to;
   }
 
   public get subject(): string {

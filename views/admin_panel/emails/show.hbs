@@ -1,0 +1,33 @@
+<h1 class="title"> para: {{ email._to }} </h1>
+
+<table class="main table border-vertical tb-vertical">
+  <tr>
+    <th class="init"> From </th>
+    <td> <div class="td-cont"> {{ email._from }} </div> </td>
+  </tr>
+
+  <tr>
+    <th> To </th>
+    <td> <div class="td-cont"> {{ email._to }} </div> </td>
+  </tr>
+
+  <tr>
+    <th> Subject </th>
+    <td> <div class="td-cont">{{ email.subject }}</div> </td>
+  </tr>
+
+  <tr>
+    <th> HTML </th>
+    <td> <div class="td-cont text" id="content-email"> {{ email.html }} </div> </td>
+  </tr>
+
+  <tr>
+    <th class="end"></th>
+    <td>
+      <form method="POST" action="/admin_panel/emails/{{email.id}}" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="btn b-red right" type="submit" > Delete </button>
+      </form>
+    </td>
+  </tr>
+</table>
