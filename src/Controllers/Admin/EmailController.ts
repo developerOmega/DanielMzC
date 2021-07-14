@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Email from "../../Models/Email";
 import { EmailData } from "../../interfaces/Models";
 import { transporter } from '../../config/mailer';
+import fs = require('fs');
 
 export default class EmailControllers {
 
@@ -59,7 +60,7 @@ export default class EmailControllers {
         from: req.session.admin.email, // sender address
         to: body._to, // list of receivers
         subject: body.subject, // Subject line
-        html: body.html, // html body
+        html: body.html == "" ? fs.readFileSync('emails/publicity.html', 'utf8') : body.html, // html body
       });
 
       // Separar parametro _to por comas en un array
