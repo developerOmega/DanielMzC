@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import Email from "../../Models/Email";
 import { EmailData } from "../../interfaces/Models";
+import { transporter } from '../../config/mailer';
 
 export default class EmailControllers {
 
@@ -52,21 +53,39 @@ export default class EmailControllers {
     let body = <EmailData> req.body;
 
     try {
-      const params: EmailData = {
-        _from: "theskip98@gmail.com",
-        _to: body._to,
-        subject: body.subject,
-        html: body.html,
-        admin_id: req.session.admin.id
-      }
 
-      const email = await Email.create(params);
+      // Mandar mail
+      await transporter.sendMail({
+        from: req.session.admin.email, // sender address
+        to: body._to, // list of receivers
+        subject: body.subject, // Subject line
+        html: body.html, // html body
+      });
 
-      if(!email.id){
-        res.redirect('back');
-      }
+      // Separar parametro _to por comas en un array
+      const list = body._to.split(',')
 
-      return res.redirect(`/admin_panel/emails/show/${email.id}`);     
+      // Recorrer lista de destinatarios; crear un registro para cada destinatario
+      list.forEach( async (__to) => {
+        
+        const params: EmailData = {
+          _from: req.session.admin.email,
+          _to: __to.trim(), // trim() ----> Elimina espacios en blanco
+          subject: body.subject,
+          html: body.html,
+          admin_id: req.session.admin.id
+        }
+  
+        const email = await Email.create(params);
+
+        if(!email.id){
+          return res.redirect('back');
+        }
+
+      });
+
+
+      return res.redirect(`/admin_panel/emails`);     
 
     } catch (error) {
       res.redirect('back');

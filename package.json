@@ -5,16 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --detectOpenHandles",
-    
     "js": "webpack --watch",
     "scss": "node-sass --watch assets/scss/ -o public/css/",
     "assets": "npm run js & npm run scss",
-
     "postinstall": "tsc",
     "nodemon": "nodemon dist/index.js",
     "build": "tsc --watch",
     "start": "node dist/index.js"
-    
   },
   "author": "Daniel Mendoza",
   "license": "ISC",
@@ -31,6 +28,7 @@
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
     "moment": "^2.29.1",
+    "nodemailer": "^6.6.3",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3"
   },
@@ -51,6 +49,7 @@
     "@types/jsonwebtoken": "^8.5.1",
     "@types/method-override": "0.0.31",
     "@types/moment": "^2.13.0",
+    "@types/nodemailer": "^6.4.4",
     "@types/pg": "^7.14.11",
     "babel-loader": "^8.2.2",
     "jest": "^26.6.3",

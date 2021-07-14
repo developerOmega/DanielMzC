@@ -69,7 +69,16 @@ class DatabaseEnv {
   static node:string = nodeEnv;
 }
 
+// ====================================
+// NODE MAILER
+// ====================================
+
+class EmailEnv {
+  static email: string = nodeEnv == 'development' || nodeEnv == 'test' ? 'theskip98@gmail.com' : process.env.EMAIL || '';
+  static password: string = nodeEnv == 'development' || nodeEnv == 'test' ? fs.readFileSync('keys/google.key', 'utf8') : process.env.GOOGLE_KEY || '';
+}
+
 
 export { 
-  port, nodeEnv, SessionConf, DatabaseEnv, dropboxEnv, JwtEnv
+  port, nodeEnv, SessionConf, DatabaseEnv, dropboxEnv, JwtEnv, EmailEnv
 };
