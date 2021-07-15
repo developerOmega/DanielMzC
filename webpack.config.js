@@ -2,7 +2,7 @@ const path = require('path');
 require('./dist/config/config');
 
 module.exports = {
-  entry: './assets/js/app_main.js',
+  entry: './assets/js/app.js',
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'public/js/'),
