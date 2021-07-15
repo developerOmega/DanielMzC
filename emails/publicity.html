@@ -5,51 +5,105 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+
     * {
       padding: 0;
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 2rem;
+      box-sizing: border-box;
     }
     .container {
       width: 100%;
+      max-width: 700px;
+      margin: auto;
     }
 
     .container header, .container footer {
       background: #1D1D1D;
       color: white;
     }
+
+    .container header {
+      padding: 1rem 0;
+    }
     .container header img {
       display: block;
     }
 
-    .logo {
+    .container footer .logo {
       font-weight: 400;
-      color: white;
       text-align: center;
     }
 
     .container .main {
-      padding: 2rem;
-      text-align: center;
+      background: #F3F3F3;
+      padding: 0 2rem;
       font-size: 1.2rem;
       font-weight:300;
+      padding-bottom: 5rem;
     }
 
-    .main button {
-      padding: .5rem;
-      width: 100%;
-      margin-top: 2rem;
-      border: none;
-      border-radius: 100px;
-      background: #D51D0B;
-      color: white;
+    .container .main .section{
+      padding-top: 5rem;
+    }
+
+    .container .main .end {
+      border-top: 1px solid #C2C2C2;
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    .container .main .end .title {
+      text-align: center;
+    }
+
+    .container .main .section p {
+      color: #1D1D1D;
       font-size: 16px;
-      cursor: pointer;  
+      padding-bottom: 2rem;
     }
 
-    .main button:hover {
-      background: red;
+    .container .main .section .title {
+      font-weight: lighter;
+      color: #D51D0B;
+      font-size: 24px;
+
     }
+
+    .container .main .section .link {
+      color: #D51D0B;
+      font-weight:600;
+      font-size: 16px;
+
+      text-decoration: none;
+      letter-spacing: .8px;
+    }
+
+    .container .main .section .link:hover {
+      color: red;
+    }
+
+    .container footer {
+      padding: 1rem;
+    }
+
+    .container footer .sec-foo {
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      font-size: 15px;
+
+      display: table;
+      margin-top: 1rem;
+    }
+
+    .container footer .sec-foo .item {
+      display: table-cell;
+      vertical-align: middle;
+      margin-right: 2rem;
+    }
+
 
   </style>
 </head>
@@ -57,16 +111,62 @@
   
   <div class="container">
     <header>
-      <img src="../public/images/logo_email_intro.gif" alt="Daniel_Animation" width="400">
+      <img src="../public/images/logo_email_v2.gif" alt="Daniel_Animation" width="400">
     </header>
     
     <div class="main">
-      <p> Hola soy daniel y este es un correo electronico c: </p>
-      <button> Admin </button>
+      <div class="section">
+        <h3 class="title">
+          Hola, soy Daniel Mendoza y soy desarrollador web de San Luis Potosí.
+        </h3>
+      </div>
+
+      <div class="section">
+        <p>Si necesitas un <b>sitio web para tu negocio</b> o un <b>nuevo diseño</b>, puedes contactarme al correo: </p>
+        <a class="link" href="#"> theskip98@gmail.com</a>
+      </div>
+
+      <div class="section">
+        <p> Si desean conocer más sobre mi trabajo, pueden visitar mi sitio web: </p>
+        <a class="link" target="_blank" href="https://danielmzc.herokuapp.com/"> https://danielmzc.herokuapp.com/ </a>
+      </div>
+
+      <div class="section end">
+        <h3 class="title">También puedes contactarme por las siguientes redes:</h3>
+      </div>
+
     </div>
 
     <footer>
+      <div class="logo"> <img src="../public/images/logoDaniel.png" alt="Daniel_Mendoza" width="200"> </div>
+      
+      <a  href="#" target="_blank" class="sec-foo">
+        
+        <img class="item" src="../public/images/wp.png" alt="wt">
+        <p class="item"> (52) 444 267 5436 </p>
+        
+      </a>
 
+      <a  href="https://www.linkedin.com/in/daniel-mendoza-99b592172/" target="_blank" class="sec-foo">  
+
+        <img class="item" src="../public/images/in.png" alt="in">
+        <p class="item"> /daniel-mendoza-99b592172 </p>
+
+      </a>
+
+      <a href="#" target="_blank" class="sec-foo">  
+
+        <img class="item" src="../public/images/fb.png" alt="fb">
+        <p class="item"> Dani Mercury </p>
+
+      </a>
+      
+      <a href="https://www.instagram.com/soydanielmzc/" target="_blank" class="sec-foo">
+
+        <img class="item" src="../public/images/ins.png" alt="ins">        
+        <p class="item"> soydanielmzc </p>
+        
+      </a>
     </footer>
   </div>
 
