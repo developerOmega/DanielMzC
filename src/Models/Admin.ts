@@ -80,4 +80,13 @@ export default class Admin extends Model {
     `, [this.id]);
     return data;
   }
+
+  public async emails() {
+    const data:any = await db.query(`
+      SELECT emails.id, emails._from, emails._to, emails.subject, emails.html, emails.admin_id, emails.updated_at, emails.created_at FROM emails 
+      INNER JOIN admins 
+      ON emails.admin_id=admins.id WHERE emails.admin_id = ? 
+    `, [this.id]);
+    return data;
+  }
 }

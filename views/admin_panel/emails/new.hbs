@@ -1,0 +1,26 @@
+<h1 class="title"> Nuevo Email </h1>
+
+<div class="button-content">
+  <a class="btn" href="/admin_panel/emails"> Lista </a>
+</div>
+
+<form class="main form" action="/admin_panel/emails" method="POST">
+
+  <div class="field">
+    <label for="_to"> Para: </label>
+    <input type="email" id="_to" name="_to" placeholder="Ingresa destinatario">
+  </div>
+
+  <div class="field">
+    <label for="subject"> Asunto: </label>
+    <input type="text" id="subject" name="subject" placeholder="Ingresa sunto">
+  </div>
+
+  <div class="field">
+    <label for="html"> Contenido: </label>
+    <textarea name="html" id="html" placeholder="Ingresar contenido"></textarea>
+  </div>
+
+  <button class="btn b-red w-100" type="submit"> Agregar </button>
+
+</form>

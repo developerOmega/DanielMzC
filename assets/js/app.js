@@ -13,8 +13,9 @@ const scripts = [
   new FileOpen('projects', 'main_img', '/admin_panel/projects/show/:id'),
   new SectionScript('/admin_panel/projects/show/:id'),
   new SectionRequestScript('/admin_panel/projects/show/:id'),
-  new TextEditorScript('/admin_panel/blogs/edit/:id'),
-  new TextEditorScript('/admin_panel/blogs/new'),
+  new TextEditorScript('content', '/admin_panel/blogs/edit/:id'),
+  new TextEditorScript('content', '/admin_panel/blogs/new'),
+  new TextEditorScript('html', '/admin_panel/emails/new'),
   new ViewBlogScript('#content-blog', '/admin_panel/blogs/show/:id')
 ]
 

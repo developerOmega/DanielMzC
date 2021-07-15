@@ -4,7 +4,7 @@ require('./dist/config/config');
 module.exports = {
   entry: './assets/js/app_main.js',
   output: {
-    filename: 'bundle_main.js',
+    filename: 'bundle.js',
     path: path.join(__dirname, 'public/js/'),
   },
   module: {
