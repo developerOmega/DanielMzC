@@ -57,7 +57,7 @@ export default class EmailControllers {
 
       // Mandar mail
       await transporter.sendMail({
-        from: req.session.admin.email, // sender address
+        from:`Daniel < ${req.session.admin.email}>`, // sender address
         to: body._to, // list of receivers
         subject: body.subject, // Subject line
         html: body.html == "" ? fs.readFileSync('emails/publicity.html', 'utf8') : body.html, // html body
