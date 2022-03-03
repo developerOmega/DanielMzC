@@ -9,7 +9,7 @@ export default class AdminAuthController {
   public async login(req:  Request, res: Response){
     let body = req.body;
     try {
-      let admin = await Admin.byEmail(body.email);
+      let admin: any = await Admin.byEmail(body.email);
 
       if(!admin){
         return res.status(401).json({
