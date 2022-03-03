@@ -23,7 +23,7 @@ export default class ProjectController {
     let id:number = parseInt(req.params.id);
 
     try {
-      const project = await Project.byId(id);
+      const project: any = await Project.byId(id);
       const sections = await Section.byProjectId(id);
 
       res.render('projects/show', {
